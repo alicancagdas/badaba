@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" width="600" height="600">
+<title>Badaba cat</title>
+<defs>
+<radialGradient id="mHead" cx="0.36" cy="0.3" r="0.78">
+<stop offset="0" stop-color="#FFD597"></stop>
+<stop offset="0.42" stop-color="#FBA54B"></stop>
+<stop offset="0.8" stop-color="#EC8028"></stop>
+<stop offset="1" stop-color="#C25B17"></stop>
+</radialGradient>
+<radialGradient id="mBody" cx="0.38" cy="0.26" r="0.85">
+<stop offset="0" stop-color="#FFC77F"></stop>
+<stop offset="0.5" stop-color="#F59440"></stop>
+<stop offset="1" stop-color="#B9551A"></stop>
+</radialGradient>
+<linearGradient id="mEar" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#FFBE70"></stop>
+<stop offset="1" stop-color="#DD6E1E"></stop>
+</linearGradient>
+<radialGradient id="mInner" cx="0.45" cy="0.6" r="0.7">
+<stop offset="0" stop-color="#FFD3DC"></stop>
+<stop offset="1" stop-color="#EE8FA8"></stop>
+</radialGradient>
+<radialGradient id="mCream" cx="0.42" cy="0.3" r="0.8">
+<stop offset="0" stop-color="#FFFFFF"></stop>
+<stop offset="0.55" stop-color="#FFF1DC"></stop>
+<stop offset="1" stop-color="#E6C39B"></stop>
+</radialGradient>
+<radialGradient id="mEye" cx="0.38" cy="0.3" r="0.8">
+<stop offset="0" stop-color="#4A5B8C"></stop>
+<stop offset="0.55" stop-color="#1E2A4A"></stop>
+<stop offset="1" stop-color="#0C1328"></stop>
+</radialGradient>
+<radialGradient id="mNose" cx="0.4" cy="0.3" r="0.8">
+<stop offset="0" stop-color="#FFC0CC"></stop>
+<stop offset="1" stop-color="#E06582"></stop>
+</radialGradient>
+<radialGradient id="mShadow" cx="0.5" cy="0.5" r="0.5">
+<stop offset="0" stop-color="#1E2A4A" stop-opacity="0.38"></stop>
+<stop offset="1" stop-color="#1E2A4A" stop-opacity="0"></stop>
+</radialGradient>
+<radialGradient id="mCoin" cx="0.38" cy="0.32" r="0.8">
+<stop offset="0" stop-color="#FFF0A8"></stop>
+<stop offset="0.45" stop-color="#F8C832"></stop>
+<stop offset="1" stop-color="#C98A0B"></stop>
+</radialGradient>
+<linearGradient id="mCoinEdge" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="#E1A11A"></stop>
+<stop offset="1" stop-color="#9E6A06"></stop>
+</linearGradient>
+<filter id="mBlur" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="9"></feGaussianBlur></filter>
+<filter id="mSoft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="5"></feGaussianBlur></filter>
+</defs>
+<ellipse cx="300" cy="556" rx="190" ry="26" fill="url(#mShadow)"></ellipse>
+<path d="M418 472 C 520 452 548 356 498 326 C 476 314 456 330 470 348 C 498 384 470 430 408 440 Z" fill="url(#mBody)"></path>
+<ellipse cx="300" cy="468" rx="152" ry="102" fill="url(#mBody)"></ellipse>
+<ellipse cx="300" cy="494" rx="86" ry="64" fill="url(#mCream)"></ellipse>
+<ellipse cx="236" cy="546" rx="50" ry="27" fill="url(#mCream)"></ellipse>
+<ellipse cx="364" cy="546" rx="50" ry="27" fill="url(#mCream)"></ellipse>
+<path d="M222 540 v12 M240 538 v14 M350 540 v12 M368 538 v14" stroke="#CFA67B" stroke-width="4" stroke-linecap="round"></path>
+<path d="M128 214 C 116 132 132 76 162 64 C 190 58 236 108 266 152 Z" fill="url(#mEar)"></path>
+<path d="M152 188 C 148 134 158 102 173 96 C 190 96 216 126 236 154 Z" fill="url(#mInner)"></path>
+<path d="M472 214 C 484 132 468 76 438 64 C 410 58 364 108 334 152 Z" fill="url(#mEar)"></path>
+<path d="M448 188 C 452 134 442 102 427 96 C 410 96 384 126 364 154 Z" fill="url(#mInner)"></path>
+<ellipse cx="300" cy="286" rx="196" ry="166" fill="url(#mHead)"></ellipse>
+<ellipse cx="300" cy="392" rx="150" ry="40" fill="#B9551A" opacity="0.18" filter="url(#mBlur)"></ellipse>
+<path d="M300 126 C 296 150 296 172 300 194 M262 134 C 262 156 266 172 273 188 M338 134 C 338 156 334 172 327 188" stroke="#D2641C" stroke-width="14" stroke-linecap="round" fill="none" opacity="0.55"></path>
+<ellipse cx="220" cy="184" rx="78" ry="30" fill="#FFFFFF" opacity="0.4" filter="url(#mSoft)" transform="rotate(-18 220 184)"></ellipse>
+<ellipse cx="300" cy="354" rx="100" ry="68" fill="url(#mCream)"></ellipse>
+<circle cx="176" cy="338" r="30" fill="#FF8FA6" opacity="0.45" filter="url(#mSoft)"></circle>
+<circle cx="424" cy="338" r="30" fill="#FF8FA6" opacity="0.45" filter="url(#mSoft)"></circle>
+<ellipse cx="232" cy="272" rx="35" ry="41" fill="url(#mEye)"></ellipse>
+<circle cx="245" cy="255" r="12" fill="#FFFFFF"></circle>
+<circle cx="222" cy="291" r="6" fill="#FFFFFF" opacity="0.8"></circle>
+<path d="M338 278 Q 372 246 406 278" stroke="#1E2A4A" stroke-width="13" stroke-linecap="round" fill="none"></path>
+<path d="M281 318 Q 300 305 319 318 Q 312 337 300 341 Q 288 337 281 318 Z" fill="url(#mNose)"></path>
+<ellipse cx="295" cy="317" rx="7" ry="3.5" fill="#FFFFFF" opacity="0.7"></ellipse>
+<path d="M300 341 C 300 357 288 367 273 362 M300 341 C 300 357 312 367 327 362" stroke="#1E2A4A" stroke-width="7" stroke-linecap="round" fill="none"></path>
+<path d="M138 334 L 214 343 M134 362 L 212 360 M462 334 L 386 343 M466 362 L 388 360" stroke="#1E2A4A" stroke-width="5" stroke-linecap="round" opacity="0.85"></path>
+<g transform="translate(470 456) rotate(-14)">
+<ellipse cx="7" cy="8" rx="60" ry="60" fill="url(#mCoinEdge)"></ellipse>
+<circle cx="0" cy="0" r="58" fill="url(#mCoin)"></circle>
+<circle cx="0" cy="0" r="43" fill="none" stroke="#C98A0B" stroke-width="5" opacity="0.75"></circle>
+<ellipse cx="0" cy="10" rx="15" ry="12" fill="#C98A0B" opacity="0.85"></ellipse>
+<circle cx="-17" cy="-10" r="7" fill="#C98A0B" opacity="0.85"></circle>
+<circle cx="-6" cy="-21" r="7" fill="#C98A0B" opacity="0.85"></circle>
+<circle cx="8" cy="-21" r="7" fill="#C98A0B" opacity="0.85"></circle>
+<circle cx="19" cy="-10" r="7" fill="#C98A0B" opacity="0.85"></circle>
+<path d="M -38 -22 A 44 44 0 0 1 -10 -42" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round" fill="none" opacity="0.6"></path>
+</g>
+</svg>
