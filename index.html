@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Badaba Studio</title>
+<meta name="description" content="Badaba Studio makes small games and short videos for curious minds: Coin Kitty on Google Play and Badaba on YouTube.">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="img/favicon.png">
+<meta property="og:title" content="Badaba Studio">
+<meta property="og:description" content="Small games and short videos, made with care.">
+<meta property="og:image" content="img/badaba-banner.webp">
+<style>
+@font-face { font-family: "Rubik"; src: url("fonts/Rubik-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("fonts/Nunito-Variable.ttf") format("truetype"); font-weight: 400 900; font-display: swap; }
+:root {
+  --ink: #1E2A4A; --ink-soft: #4A5672; --cream: #FFF6E5; --paper: #FFFFFF; --sand: #F4EBDD;
+  --red: #E8413A; --orange: #F79A3A; --yellow: #F6C028; --green: #3BB55E; --blue: #36A3F0; --purple: #8B6CF0;
+  --radius: 22px; --line: 3px;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--cream); color: var(--ink); font: 500 17px/1.55 "Nunito", system-ui, sans-serif; }
+a { color: inherit; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+header.top { position: sticky; top: 0; z-index: 10; background: rgba(255, 246, 229, 0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(30, 42, 74, 0.08); }
+header.top .wrap { display: flex; align-items: center; gap: 14px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 22px "Rubik", sans-serif; }
+.brand img { width: 38px; height: 38px; border-radius: 12px; border: 2px solid var(--ink); }
+nav { margin-left: auto; display: flex; gap: 18px; align-items: center; }
+nav a { text-decoration: none; font-weight: 800; color: var(--ink-soft); }
+nav a:hover { color: var(--ink); }
+.lang { font: 800 14px "Nunito", sans-serif; color: var(--ink); background: var(--paper); border: 2px solid var(--ink); border-radius: 12px; padding: 6px 8px; }
+.hero { background: linear-gradient(115deg, #FFB067 0%, #FF7F8A 48%, #B98BF0 100%); color: var(--paper); overflow: hidden; position: relative; }
+.hero::before, .hero::after { content: ""; position: absolute; border-radius: 50%; background: rgba(255, 255, 255, 0.14); }
+.hero::before { width: 420px; height: 420px; right: -120px; top: -160px; }
+.hero::after { width: 300px; height: 300px; left: -100px; bottom: -150px; }
+.hero .wrap { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 32px; align-items: center; padding-top: 72px; padding-bottom: 80px; position: relative; z-index: 1; }
+.wordmark { display: inline-block; background: var(--paper); border-radius: 999px; padding: 10px 34px 16px; box-shadow: 0 8px 0 rgba(30, 42, 74, 0.18); font: 700 clamp(48px, 9vw, 96px)/1 "Rubik", sans-serif; letter-spacing: -1px; -webkit-text-stroke: 3px var(--ink); paint-order: stroke fill; }
+.wordmark span:nth-child(1) { color: var(--red); } .wordmark span:nth-child(2) { color: var(--orange); }
+.wordmark span:nth-child(3) { color: var(--yellow); } .wordmark span:nth-child(4) { color: var(--green); }
+.wordmark span:nth-child(5) { color: var(--blue); } .wordmark span:nth-child(6) { color: var(--purple); }
+.hero h1 { margin: 26px 0 10px; font: 800 clamp(26px, 3.6vw, 38px)/1.2 "Nunito", sans-serif; text-shadow: 0 2px 0 rgba(30, 42, 74, 0.18); }
+.hero p { margin: 0; font-size: 19px; max-width: 34ch; opacity: 0.95; }
+.hero .cat { justify-self: center; width: min(300px, 70vw); border-radius: 36px; border: 4px solid var(--ink); box-shadow: 0 10px 0 var(--ink); transform: rotate(3deg); }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 10px 20px; border-radius: 16px; border: var(--line) solid var(--ink); background: var(--paper); color: var(--ink); font: 800 17px "Nunito", sans-serif; text-decoration: none; box-shadow: 0 4px 0 var(--ink); }
+.btn:hover { transform: translateY(-1px); }
+.btn.primary { background: var(--yellow); }
+section { padding: 72px 0; }
+section h2 { margin: 0 0 8px; font: 800 clamp(28px, 3.4vw, 36px)/1.2 "Nunito", sans-serif; }
+section .lead { margin: 0 0 30px; color: var(--ink-soft); font-size: 18px; max-width: 60ch; }
+.card { background: var(--paper); border: var(--line) solid var(--ink); border-radius: var(--radius); box-shadow: 0 6px 0 var(--ink); }
+.game { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; }
+.game .info { padding: 30px; display: flex; flex-direction: column; gap: 14px; }
+.game .head { display: flex; gap: 16px; align-items: center; }
+.game .head img { width: 84px; height: 84px; border-radius: 20px; border: 2px solid var(--ink); }
+.game h3 { margin: 0; font: 800 26px/1.15 "Nunito", sans-serif; }
+.badge { display: inline-block; margin-top: 6px; padding: 3px 10px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 13px; font-weight: 800; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; margin: 0; list-style: none; }
+.chips li { background: var(--sand); border-radius: 999px; padding: 4px 12px; font-size: 14px; font-weight: 800; }
+.shots { background: linear-gradient(160deg, #8DBEE8, #F2E7D6); display: flex; gap: 12px; justify-content: center; align-items: center; padding: 26px 18px; }
+.shots img { width: 30%; max-width: 170px; aspect-ratio: 9 / 16; border-radius: 16px; border: 2px solid var(--ink); background: var(--cream); }
+.shots img:nth-child(2) { transform: translateY(-14px); }
+.channel { display: grid; grid-template-columns: 1.1fr 0.9fr; overflow: hidden; }
+.channel img { width: 100%; height: 100%; object-fit: cover; display: block; border-right: var(--line) solid var(--ink); }
+.channel .info { padding: 30px; display: flex; flex-direction: column; gap: 12px; justify-content: center; }
+.channel h3 { margin: 0; font: 800 26px "Nunito", sans-serif; }
+.channel .handle { color: var(--ink-soft); font-weight: 800; }
+footer { padding: 28px 0 40px; color: var(--ink-soft); font-size: 14px; text-align: center; }
+footer a { color: var(--ink-soft); }
+@media (max-width: 760px) {
+  nav a { display: none; }
+  .hero .wrap, .game, .channel { grid-template-columns: 1fr; }
+  .hero .wrap { padding-top: 44px; padding-bottom: 56px; text-align: center; }
+  .hero p { margin: 0 auto; }
+  .cta { justify-content: center; }
+  .hero .cat { width: 200px; order: -1; }
+  .channel img { border-right: 0; border-bottom: var(--line) solid var(--ink); aspect-ratio: 16 / 9; }
+  section { padding: 52px 0; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><img src="img/badaba-cat.png" alt="" width="38" height="38">Badaba</a>
+    <nav>
+      <a href="#games" data-i18n="nav_games">Games</a>
+      <a href="#videos" data-i18n="nav_videos">Videos</a>
+      <select class="lang" id="lang" aria-label="Language">
+        <option value="en">English</option>
+        <option value="tr">Türkçe</option>
+        <option value="es">Español</option>
+        <option value="fr">Français</option>
+      </select>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <div class="wordmark" aria-label="Badaba"><span>B</span><span>a</span><span>d</span><span>a</span><span>b</span><span>a</span></div>
+        <h1 data-i18n="hero_title">Small games and short videos, made with care.</h1>
+        <p data-i18n="hero_text">Badaba Studio is an independent studio. We make calm, friendly games and wordless videos that anyone can enjoy, in any language.</p>
+        <div class="cta">
+          <a class="btn primary" href="#games" data-i18n="cta_games">Our games</a>
+          <a class="btn" href="https://www.youtube.com/@badabakids" rel="noopener" data-i18n="cta_youtube">Watch on YouTube</a>
+        </div>
+      </div>
+      <img class="cat" src="img/badaba-cat.png" alt="" width="256" height="256">
+    </div>
+  </div>
+
+  <section id="games">
+    <div class="wrap">
+      <h2 data-i18n="games_title">Games</h2>
+      <p class="lead" data-i18n="games_lead">Our first game is on its way to Google Play.</p>
+      <article class="card game">
+        <div class="info">
+          <div class="head">
+            <img src="img/coin-kitty-icon.png" alt="" width="84" height="84">
+            <div>
+              <h3 data-i18n="game_title">Coin Kitty: Merge &amp; Save</h3>
+              <span class="badge" data-i18n="game_badge">Coming soon on Google Play</span>
+            </div>
+          </div>
+          <p data-i18n="game_text">Drop coins into a cat jar, merge equal ones and save up to the Golden Cat!</p>
+          <ul class="chips">
+            <li data-i18n="chip_ads">No ads</li>
+            <li data-i18n="chip_iap">No in-app purchases</li>
+            <li data-i18n="chip_offline">Plays offline</li>
+            <li data-i18n="chip_langs">4 languages</li>
+          </ul>
+        </div>
+        <div class="shots">
+          <img data-shot="menu" src="img/coin-kitty-en-menu.webp" alt="" width="360" height="640" loading="lazy">
+          <img data-shot="game" src="img/coin-kitty-en-game.webp" alt="" width="360" height="640" loading="lazy">
+          <img data-shot="room" src="img/coin-kitty-en-room.webp" alt="" width="360" height="640" loading="lazy">
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="videos" style="padding-top: 0">
+    <div class="wrap">
+      <h2 data-i18n="videos_title">Videos</h2>
+      <p class="lead" data-i18n="videos_lead">Short, wordless puzzles for little ones, like "find the odd one out". No words, so every child can play along.</p>
+      <article class="card channel">
+        <img src="img/badaba-banner.webp" alt="" width="1280" height="720" loading="lazy">
+        <div class="info">
+          <h3>Badaba</h3>
+          <div class="handle">@badabakids</div>
+          <p data-i18n="channel_text">New shorts on YouTube. Watch together with your child.</p>
+          <div><a class="btn primary" href="https://www.youtube.com/@badabakids" rel="noopener" data-i18n="cta_youtube">Watch on YouTube</a></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 Badaba Studio · <span data-i18n="footer_privacy">This site uses no cookies and no tracking.</span></div>
+    <div><span data-i18n="footer_fonts">Fonts:</span> Rubik, Nunito (<a href="fonts/Rubik-OFL.txt">SIL OFL 1.1</a>, <a href="fonts/Nunito-OFL.txt">SIL OFL 1.1</a>)</div>
+  </div>
+</footer>
+
+<script>
+var TEXT = {
+  en: {
+    nav_games: "Games", nav_videos: "Videos",
+    hero_title: "Small games and short videos, made with care.",
+    hero_text: "Badaba Studio is an independent studio. We make calm, friendly games and wordless videos that anyone can enjoy, in any language.",
+    cta_games: "Our games", cta_youtube: "Watch on YouTube",
+    games_title: "Games", games_lead: "Our first game is on its way to Google Play.",
+    game_title: "Coin Kitty: Merge & Save", game_badge: "Coming soon on Google Play",
+    game_text: "Drop coins into a cat jar, merge equal ones and save up to the Golden Cat!",
+    chip_ads: "No ads", chip_iap: "No in-app purchases", chip_offline: "Plays offline", chip_langs: "4 languages",
+    videos_title: "Videos",
+    videos_lead: "Short, wordless puzzles for little ones, like “find the odd one out”. No words, so every child can play along.",
+    channel_text: "New shorts on YouTube. Watch together with your child.",
+    footer_privacy: "This site uses no cookies and no tracking.", footer_fonts: "Fonts:",
+    shot_alt: "Coin Kitty screenshot"
+  },
+  tr: {
+    nav_games: "Oyunlar", nav_videos: "Videolar",
+    hero_title: "Özenle yapılmış küçük oyunlar ve kısa videolar.",
+    hero_text: "Badaba Studio bağımsız bir stüdyo. Herkesin, her dilde keyifle oynayıp izleyebileceği sakin, sıcak oyunlar ve sözsüz videolar yapıyoruz.",
+    cta_games: "Oyunlarımız", cta_youtube: "YouTube'da izle",
+    games_title: "Oyunlar", games_lead: "İlk oyunumuz Google Play'e geliyor.",
+    game_title: "Kumbara Kedi: Para Birleştir", game_badge: "Yakında Google Play'de",
+    game_text: "Paraları kedi kumbaraya at, eşleri birleştir, Altın Kedi'ye kadar biriktir!",
+    chip_ads: "Reklam yok", chip_iap: "Uygulama içi satın alma yok", chip_offline: "Çevrimdışı oynanır", chip_langs: "4 dil",
+    videos_title: "Videolar",
+    videos_lead: "Küçükler için kısa, sözsüz bulmacalar; örneğin “farklı olanı bul”. Söz yok, her çocuk katılabilir.",
+    channel_text: "YouTube'da yeni kısa videolar. Çocuğunuzla birlikte izleyin.",
+    footer_privacy: "Bu site çerez ve takip kullanmaz.", footer_fonts: "Yazı tipleri:",
+    shot_alt: "Kumbara Kedi ekran görüntüsü"
+  },
+  es: {
+    nav_games: "Juegos", nav_videos: "Vídeos",
+    hero_title: "Pequeños juegos y vídeos cortos, hechos con cariño.",
+    hero_text: "Badaba Studio es un estudio independiente. Hacemos juegos tranquilos y amables y vídeos sin palabras que cualquiera puede disfrutar, en cualquier idioma.",
+    cta_games: "Nuestros juegos", cta_youtube: "Ver en YouTube",
+    games_title: "Juegos", games_lead: "Nuestro primer juego llega pronto a Google Play.",
+    game_title: "Coin Kitty: Fusiona monedas", game_badge: "Próximamente en Google Play",
+    game_text: "Suelta monedas en una hucha gatuna, fusiónalas y ahorra hasta el Gato dorado.",
+    chip_ads: "Sin anuncios", chip_iap: "Sin compras en la app", chip_offline: "Funciona sin conexión", chip_langs: "4 idiomas",
+    videos_title: "Vídeos",
+    videos_lead: "Acertijos cortos y sin palabras para los más pequeños, como “encuentra el diferente”. Sin palabras, así cualquier niño puede jugar.",
+    channel_text: "Nuevos shorts en YouTube. Míralos junto a tu hijo o hija.",
+    footer_privacy: "Este sitio no usa cookies ni seguimiento.", footer_fonts: "Tipografías:",
+    shot_alt: "Captura de Coin Kitty"
+  },
+  fr: {
+    nav_games: "Jeux", nav_videos: "Vidéos",
+    hero_title: "Petits jeux et courtes vidéos, faits avec soin.",
+    hero_text: "Badaba Studio est un studio indépendant. Nous faisons des jeux calmes et chaleureux et des vidéos sans paroles que chacun peut apprécier, dans toutes les langues.",
+    cta_games: "Nos jeux", cta_youtube: "Regarder sur YouTube",
+    games_title: "Jeux", games_lead: "Notre premier jeu arrive bientôt sur Google Play.",
+    game_title: "Coin Kitty : Chat-tirelire", game_badge: "Bientôt sur Google Play",
+    game_text: "Lâche des pièces dans la tirelire chat, fusionne-les jusqu'au Chat doré !",
+    chip_ads: "Sans publicité", chip_iap: "Sans achats intégrés", chip_offline: "Se joue hors ligne", chip_langs: "4 langues",
+    videos_title: "Vidéos",
+    videos_lead: "De courtes énigmes sans paroles pour les petits, comme « trouve l'intrus ». Sans paroles, chaque enfant peut jouer.",
+    channel_text: "De nouveaux shorts sur YouTube. À regarder avec votre enfant.",
+    footer_privacy: "Ce site n'utilise ni cookies ni traçage.", footer_fonts: "Polices :",
+    shot_alt: "Capture de Coin Kitty"
+  }
+};
+function pickLang() {
+  var q = new URLSearchParams(location.search).get("lang");
+  if (q && TEXT[q]) return q;
+  try { var saved = localStorage.getItem("badaba-lang"); if (saved && TEXT[saved]) return saved; } catch (e) {}
+  var nav = (navigator.language || "en").slice(0, 2).toLowerCase();
+  return TEXT[nav] ? nav : "en";
+}
+function apply(lang) {
+  var t = TEXT[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(function (el) {
+    var key = el.getAttribute("data-i18n");
+    if (t[key]) el.textContent = t[key];
+  });
+  document.querySelectorAll("img[data-shot]").forEach(function (img) {
+    img.src = "img/coin-kitty-" + lang + "-" + img.getAttribute("data-shot") + ".webp";
+    img.alt = t.shot_alt;
+  });
+  document.getElementById("lang").value = lang;
+}
+var select = document.getElementById("lang");
+select.addEventListener("change", function () {
+  try { localStorage.setItem("badaba-lang", select.value); } catch (e) {}
+  apply(select.value);
+});
+apply(pickLang());
+</script>
+</body>
+</html>
