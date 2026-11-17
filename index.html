@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Badaba Studio</title>
-<meta name="description" content="Badaba Studio makes small games and short videos: Coin Kitty on Google Play and Badaba Shorts on YouTube. English, Türkçe, Español, Français.">
+<meta name="description" content="Badaba Studio makes small games and short videos: Coin Kitty on Google Play, Badaba Odd One Out in your browser and Badaba Shorts on YouTube. English, Türkçe, Español, Français.">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0A0F1F">
 <link rel="icon" href="img/badaba-cat-3d.svg" type="image/svg+xml">
@@ -121,7 +121,7 @@ section.block h2 { margin: 6px 0 8px; font-size: clamp(32px, 4vw, 44px); letter-
 .game { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; padding: 36px; }
 .preview { flex: 0 1 300px; min-width: 0; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
 .phone { position: relative; border-radius: 40px; padding: 10px; background: #0B0F1C; box-shadow: 0 24px 60px var(--shadow), 0 0 0 1px var(--border); }
-.phone video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 32px; background: #FFF6E5; }
+.phone video, .phone img { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 32px; background: #FFF6E5; }
 .live { margin: 0; display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; font-weight: 900; }
 .live i { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); flex: none; }
 .live span { flex: 1; }
@@ -136,6 +136,7 @@ section.block h2 { margin: 6px 0 8px; font-size: clamp(32px, 4vw, 44px); letter-
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 14px; font-weight: 900; }
 .chips li { border: 1px solid var(--border); border-radius: 999px; padding: 5px 14px; }
 .thumbs { display: flex; gap: 12px; }
+.game + .game { margin-top: 28px; }
 .thumbs img { width: 92px; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 14px; border: 1px solid var(--border); }
 .small { margin: 0; font-size: 14px; }
 .shorts-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
@@ -202,7 +203,7 @@ footer a { color: var(--muted); }
   .game { padding: 18px; gap: 18px; }
   .preview { flex-basis: 100%; max-width: 320px; }
   .phone { border-radius: 30px; padding: 8px; }
-  .phone video { border-radius: 24px; }
+  .phone video, .phone img { border-radius: 24px; }
   .game-head img { width: 64px; height: 64px; border-radius: 18px; }
   .game h3 { font-size: 21px; }
   .thumbs img { width: 30%; }
@@ -266,7 +267,7 @@ footer a { color: var(--muted); }
   <section id="games" class="block">
     <div class="wrap">
       <span class="kicker" data-i18n="games_kicker">Games</span>
-      <h2 data-i18n="game_name">Coin Kitty</h2>
+      <h2 data-i18n="games_title">Our games</h2>
       <article class="panel game">
         <figure class="preview">
           <div class="phone">
@@ -302,6 +303,36 @@ footer a { color: var(--muted); }
             <img data-shot="room" src="img/coin-kitty-en-room.webp" alt="" width="360" height="640" loading="lazy">
           </div>
           <p class="small muted"><span data-i18n="privacy_label">Privacy policy:</span> <a href="kumbara-kedi/privacy/en.html" lang="en">EN</a> · <a href="kumbara-kedi/privacy/tr.html" lang="tr">TR</a> · <a href="kumbara-kedi/privacy/es.html" lang="es">ES</a> · <a href="kumbara-kedi/privacy/fr.html" lang="fr">FR</a></p>
+        </div>
+      </article>
+      <article class="panel game" id="odd-one-out">
+        <figure class="preview">
+          <div class="phone">
+            <img src="img/odd-one-out-level30.webp" alt="" width="360" height="640">
+          </div>
+        </figure>
+        <div class="info">
+          <div class="game-head">
+            <img src="img/odd-one-out-icon.png" alt="" width="84" height="84">
+            <div>
+              <h3 data-i18n="odd_title">Badaba Odd One Out</h3>
+              <span class="badge" data-i18n="odd_badge">New · free in your browser</span>
+            </div>
+          </div>
+          <p class="muted" style="margin: 0" data-i18n="odd_text">Find the picture that is different! Grids grow from 3×3 to 6×6 across 36 levels, with a race against the clock and a calm mode for the youngest. There are no words on screen, so little ones can play before they can read.</p>
+          <ul class="chips">
+            <li data-i18n="chip_ads">No ads</li>
+            <li data-i18n="chip_iap">No in-app purchases</li>
+            <li data-i18n="odd_chip_words">No reading needed</li>
+            <li data-i18n="odd_chip_levels">36 levels</li>
+          </ul>
+          <p style="margin: 0"><a class="btn gold" href="https://badaba-odd-one-out.web.app/" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"></path></svg><span data-i18n="cta_preview">Play in your browser</span></a></p>
+          <div class="thumbs">
+            <img src="img/odd-one-out-menu.webp" alt="" width="360" height="640" loading="lazy">
+            <img src="img/odd-one-out-level.webp" alt="" width="360" height="640" loading="lazy">
+            <img src="img/odd-one-out-arcade.webp" alt="" width="360" height="640" loading="lazy">
+          </div>
+          <p class="small muted"><span data-i18n="privacy_label">Privacy policy:</span> <a href="odd-one-out/privacy/en.html" lang="en">EN</a> · <a href="odd-one-out/privacy/tr.html" lang="tr">TR</a> · <a href="odd-one-out/privacy/es.html" lang="es">ES</a> · <a href="odd-one-out/privacy/fr.html" lang="fr">FR</a></p>
         </div>
       </article>
     </div>
@@ -362,11 +393,13 @@ var TEXT = {
     cta_preview: "Play in your browser", cta_shorts: "Watch our Shorts",
     cat_label: "Tap the cat", cat_hint: "Psst… tap the cat", cat_count: "Coins: %d / 10", cat_gold: "Golden cat unlocked",
     toast_gold: "You unlocked the golden cat!", toast_coin: "You found the secret coin!", coin_label: "A coin",
-    games_kicker: "Games", game_name: "Coin Kitty",
+    games_kicker: "Games", games_title: "Our games",
     preview_badge: "Gameplay · plays on its own", preview_label: "Coin Kitty gameplay preview", pause: "Pause the preview", play: "Play the preview",
     game_title: "Coin Kitty: Merge & Save", game_badge: "Coming soon on Google Play",
     game_text: "Drop coins into a cat jar, merge equal ones and save up to the Golden Cat! A new Daily Jar goal every day, a wardrobe for the hero and his dreams from a bike to a private island.",
     chip_ads: "No ads", chip_iap: "No in-app purchases", chip_offline: "Plays offline", privacy_label: "Privacy policy:",
+    odd_title: "Badaba Odd One Out", odd_badge: "New · free in your browser", odd_chip_words: "No reading needed", odd_chip_levels: "36 levels",
+    odd_text: "Find the picture that is different! Grids grow from 3×3 to 6×6 across 36 levels, with a race against the clock and a calm mode for the youngest. There are no words on screen, so little ones can play before they can read.",
     shot_menu: "Coin Kitty main menu", shot_game: "Coin Kitty during a game", shot_room: "Coin Kitty: the hero's world",
     shorts_title: "Find the odd one out",
     shorts_text: "Wordless puzzles for little ones on Badaba (@badabakids). Tap a Short to play it here.",
@@ -383,11 +416,13 @@ var TEXT = {
     cta_preview: "Tarayıcıda oyna", cta_shorts: "Shorts'larımızı izle",
     cat_label: "Kediye dokun", cat_hint: "Psst… kediye dokun", cat_count: "Para: %d / 10", cat_gold: "Altın kedi açıldı",
     toast_gold: "Altın kediyi açtın!", toast_coin: "Gizli parayı buldun!", coin_label: "Bir para",
-    games_kicker: "Oyunlar", game_name: "Kumbara Kedi",
+    games_kicker: "Oyunlar", games_title: "Oyunlarımız",
     preview_badge: "Oynanış · kendi kendine oynar", preview_label: "Kumbara Kedi oynanış önizlemesi", pause: "Önizlemeyi duraklat", play: "Önizlemeyi oynat",
     game_title: "Kumbara Kedi: Para Birleştir", game_badge: "Yakında Google Play'de",
     game_text: "Paraları kedi kumbaraya at, eşleri birleştir, Altın Kedi'ye kadar biriktir! Her gün yeni bir Günlük Kumbara hedefi, kahraman için bir gardırop ve bisikletten özel adaya uzanan hayaller.",
     chip_ads: "Reklam yok", chip_iap: "Uygulama içi satın alma yok", chip_offline: "Çevrimdışı oynanır", privacy_label: "Gizlilik politikası:",
+    odd_title: "Badaba Farklı Olanı Bul", odd_badge: "Yeni · tarayıcıda ücretsiz", odd_chip_words: "Okuma gerekmez", odd_chip_levels: "36 seviye",
+    odd_text: "Farklı olan resmi bul! 36 seviyede ızgara 3×3'ten 6×6'ya büyür; ayrıca saate karşı bir yarış ve en küçükler için sakin bir mod var. Ekranda hiç yazı yok, okuma bilmeyen çocuklar da oynayabilir.",
     shot_menu: "Kumbara Kedi ana menü", shot_game: "Kumbara Kedi oyun sırasında", shot_room: "Kumbara Kedi: kahramanın dünyası",
     shorts_title: "Farklı olanı bul",
     shorts_text: "Badaba'da (@badabakids) küçükler için sözsüz bulmacalar. Burada oynatmak için bir Short'a dokunun.",
@@ -404,11 +439,13 @@ var TEXT = {
     cta_preview: "Juega en el navegador", cta_shorts: "Ver nuestros Shorts",
     cat_label: "Toca al gato", cat_hint: "Psst… toca al gato", cat_count: "Monedas: %d / 10", cat_gold: "Gato dorado desbloqueado",
     toast_gold: "¡Desbloqueaste el gato dorado!", toast_coin: "¡Encontraste la moneda secreta!", coin_label: "Una moneda",
-    games_kicker: "Juegos", game_name: "Coin Kitty",
+    games_kicker: "Juegos", games_title: "Nuestros juegos",
     preview_badge: "Partida · se juega sola", preview_label: "Avance de Coin Kitty", pause: "Pausar el avance", play: "Reproducir el avance",
     game_title: "Coin Kitty: Fusiona monedas", game_badge: "Próximamente en Google Play",
     game_text: "¡Suelta monedas en una hucha gatuna, fusiona las iguales y ahorra hasta el Gato dorado! Un nuevo reto de la Hucha diaria cada día, un armario para el protagonista y sus sueños, de una bici a una isla privada.",
     chip_ads: "Sin anuncios", chip_iap: "Sin compras en la app", chip_offline: "Funciona sin conexión", privacy_label: "Política de privacidad:",
+    odd_title: "Badaba Odd One Out", odd_badge: "Nuevo · gratis en el navegador", odd_chip_words: "No hace falta leer", odd_chip_levels: "36 niveles",
+    odd_text: "¡Encuentra el dibujo diferente! Las cuadrículas crecen de 3×3 a 6×6 en 36 niveles, con una carrera contra el reloj y un modo tranquilo para los más pequeños. No hay palabras en pantalla, así que se puede jugar antes de saber leer.",
     shot_menu: "Menú principal de Coin Kitty", shot_game: "Coin Kitty durante una partida", shot_room: "Coin Kitty: el mundo del protagonista",
     shorts_title: "Encuentra el diferente",
     shorts_text: "Acertijos sin palabras para los más pequeños en Badaba (@badabakids). Toca un Short para verlo aquí.",
@@ -425,11 +462,13 @@ var TEXT = {
     cta_preview: "Jouer dans le navigateur", cta_shorts: "Voir nos Shorts",
     cat_label: "Touche le chat", cat_hint: "Psst… touche le chat", cat_count: "Pièces : %d / 10", cat_gold: "Chat doré débloqué",
     toast_gold: "Tu as débloqué le chat doré !", toast_coin: "Tu as trouvé la pièce secrète !", coin_label: "Une pièce",
-    games_kicker: "Jeux", game_name: "Coin Kitty",
+    games_kicker: "Jeux", games_title: "Nos jeux",
     preview_badge: "Partie · se joue toute seule", preview_label: "Aperçu de Coin Kitty", pause: "Mettre l'aperçu en pause", play: "Lire l'aperçu",
     game_title: "Coin Kitty : Chat-tirelire", game_badge: "Bientôt sur Google Play",
     game_text: "Lâche des pièces dans la tirelire chat, fusionne les pièces identiques et économise jusqu'au Chat doré ! Un nouvel objectif de la Tirelire du jour chaque jour, une garde-robe pour le héros et ses rêves, du vélo à l'île privée.",
     chip_ads: "Sans publicité", chip_iap: "Sans achats intégrés", chip_offline: "Se joue hors ligne", privacy_label: "Politique de confidentialité :",
+    odd_title: "Badaba Odd One Out", odd_badge: "Nouveau · gratuit dans le navigateur", odd_chip_words: "Pas besoin de lire", odd_chip_levels: "36 niveaux",
+    odd_text: "Trouve l'image différente ! Les grilles passent de 3×3 à 6×6 sur 36 niveaux, avec une course contre la montre et un mode calme pour les plus petits. Aucun mot à l'écran : on peut jouer avant de savoir lire.",
     shot_menu: "Menu principal de Coin Kitty", shot_game: "Coin Kitty pendant une partie", shot_room: "Coin Kitty : le monde du héros",
     shorts_title: "Trouve l'intrus",
     shorts_text: "Des énigmes sans paroles pour les petits sur Badaba (@badabakids). Touchez un Short pour le voir ici.",

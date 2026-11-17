@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy · Badaba Odd One Out · Badaba Studio</title>
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="../../img/badaba-cat-3d.svg" type="image/svg+xml">
+<script>
+(function () {
+  var t = null;
+  try { t = localStorage.getItem("badaba-theme"); } catch (e) {}
+  if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", t);
+})();
+</script>
+<style>
+@font-face { font-family: "Rubik"; src: url("../../fonts/Rubik-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("../../fonts/Nunito-Variable.ttf") format("truetype"); font-weight: 400 900; font-display: swap; }
+[data-theme="dark"] { --bg: #0A0F1F; --text: #F3F1FF; --muted: #B3B8DA; --surface: rgba(255, 255, 255, 0.05); --border: rgba(255, 255, 255, 0.12); --cyan: #3FD6FF; --code: rgba(255, 255, 255, 0.08); color-scheme: dark; }
+[data-theme="light"] { --bg: #F6F4FF; --text: #141A33; --muted: #4E5677; --surface: #FFFFFF; --border: rgba(20, 26, 51, 0.12); --cyan: #00799E; --code: #ECE9FA; color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 500 17px/1.65 "Nunito", system-ui, sans-serif; }
+a { color: var(--cyan); }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; border-radius: 8px; }
+header { border-bottom: 1px solid var(--border); }
+header div { max-width: 820px; margin: 0 auto; padding: 12px 20px; display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font: 700 20px "Rubik", sans-serif; flex-grow: 1; }
+.brand img { width: 40px; height: 40px; }
+nav { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 3px; }
+nav a { min-width: 44px; min-height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 11px; text-decoration: none; color: var(--text); font-weight: 900; font-size: 13px; }
+nav a[aria-current="page"] { background: #FFC93C; color: #141A33; }
+.theme { width: 44px; height: 44px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); color: var(--text); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.theme svg { width: 20px; height: 20px; }
+[data-theme="dark"] .sun-hide, [data-theme="light"] .moon-hide { display: none; }
+main { max-width: 820px; margin: 0 auto; padding: 32px 20px 48px; }
+article { background: var(--surface); border: 1px solid var(--border); border-radius: 28px; padding: 36px; }
+h1, h2, h3 { font-family: "Rubik", sans-serif; font-weight: 700; line-height: 1.2; }
+h1 { font-size: 34px; margin: 0 0 12px; }
+h2 { font-size: 22px; margin: 28px 0 8px; }
+ul { padding-left: 22px; }
+li { margin: 4px 0; }
+code { background: var(--code); border-radius: 6px; padding: 0 5px; }
+.back { display: inline-block; margin-top: 24px; font-weight: 800; }
+footer { text-align: center; color: var(--muted); font-size: 14px; padding: 0 20px 40px; }
+@media (max-width: 600px) { article { padding: 20px; border-radius: 22px; } h1 { font-size: 28px; } body { font-size: 16px; } }
+</style>
+</head>
+<body>
+<header><div>
+<a class="brand" href="../../?lang=en"><img src="../../img/badaba-cat-3d.svg" alt="" width="40" height="40">Badaba Studio</a>
+<nav aria-label="Language"><a href="en.html" lang="en" aria-current="page">EN</a><a href="tr.html" lang="tr">TR</a><a href="es.html" lang="es">ES</a><a href="fr.html" lang="fr">FR</a></nav>
+<button type="button" class="theme" id="theme" aria-label="">
+<svg class="moon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"></path></svg>
+<svg class="sun-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+</button>
+</div></header>
+<main>
+<article>
+<h1>Privacy Policy</h1>
+<p><strong>Game:</strong> Badaba Odd One Out (Badaba Farklı Olanı Bul in Turkish), played in a web browser at <a href="https://badaba-odd-one-out.web.app/">badaba-odd-one-out.web.app</a></p>
+<p><strong>Effective date:</strong> 17 November 2026 (2026-11-17)</p>
+<p>This policy explains how the game (the "game", "we", "us") handles information. The short version: the game collects no personal data from anyone. It has no account, no ads, no analytics, no cookies, no purchases, no chat and no links that lead out of the game.</p>
+<h2>1. Information we collect</h2>
+<p>None. The game never asks for a name, email address, location or any other personal information, it has no place to type text, and it creates no advertising ID or other identifier for you.</p>
+<h2>2. Information stored on your device</h2>
+<p>To keep your progress, the game saves a small file in your browser's storage for this website, on your device only. It contains:</p>
+<ul>
+<li>the stars you earned in each level, and so which levels are open,</li>
+<li>your best score in the timed mode and how many pictures you found in the calm mode,</li>
+<li>whether the sound is on.</li>
+</ul>
+<p>This file is never sent anywhere, and we cannot see it. Clearing this website's data in your browser deletes it and resets your progress.</p>
+<h2>3. Hosting and third parties</h2>
+<p>The game's files are served by Firebase Hosting, a Google service. As with any website, when your browser downloads the game, Google's servers receive the technical information needed to deliver it, such as your IP address and browser type, and may keep it in server logs under <a href="https://policies.google.com/privacy">Google's privacy policy</a> (see also <a href="https://firebase.google.com/support/privacy">Privacy and security in Firebase</a>). We have not turned on analytics or request logging for the game, and we do not use any other Firebase or Google service in it.</p>
+<p>Once loaded, the game sends no data over the internet. It contains no third-party services or SDKs for advertising, analytics, crash reporting, payments or social login.</p>
+<h2>4. Children</h2>
+<p>The game is made for young children, including children who cannot read yet. It collects no personal information from anyone, including children. It has no ads, no purchases, no chat, no way to contact other players and no links to other websites.</p>
+<h2>5. Your rights</h2>
+<p>Because we do not collect or hold any personal data about you, there is nothing for us to access, correct, export or delete on our side. Your progress is entirely under your control in your browser (see section 2). You are still welcome to contact us with any question.</p>
+<h2>6. Changes to this policy</h2>
+<p>If a future version adds features that handle data (for example ads, analytics, purchases or online features), we will update this policy before that version is released, change the effective date above and, where the law requires it, ask for consent first.</p>
+<h2>7. Contact</h2>
+<p>Questions about this policy or the game: <a href="mailto:alicancagdasdev@gmail.com">alicancagdasdev@gmail.com</a></p>
+</article>
+<a class="back" href="../../?lang=en">Back to Badaba Studio</a>
+</main>
+<footer>© 2026 Badaba Studio</footer>
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById("theme");
+  function label() { btn.setAttribute("aria-label", root.getAttribute("data-theme") === "dark" ? "Switch to light mode" : "Switch to dark mode"); }
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("badaba-theme", next); } catch (e) {}
+    label();
+  });
+  label();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Politique de confidentialité · Badaba Odd One Out · Badaba Studio</title>
+<meta name="color-scheme" content="dark light">
+<link rel="icon" href="../../img/badaba-cat-3d.svg" type="image/svg+xml">
+<script>
+(function () {
+  var t = null;
+  try { t = localStorage.getItem("badaba-theme"); } catch (e) {}
+  if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", t);
+})();
+</script>
+<style>
+@font-face { font-family: "Rubik"; src: url("../../fonts/Rubik-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Nunito"; src: url("../../fonts/Nunito-Variable.ttf") format("truetype"); font-weight: 400 900; font-display: swap; }
+[data-theme="dark"] { --bg: #0A0F1F; --text: #F3F1FF; --muted: #B3B8DA; --surface: rgba(255, 255, 255, 0.05); --border: rgba(255, 255, 255, 0.12); --cyan: #3FD6FF; --code: rgba(255, 255, 255, 0.08); color-scheme: dark; }
+[data-theme="light"] { --bg: #F6F4FF; --text: #141A33; --muted: #4E5677; --surface: #FFFFFF; --border: rgba(20, 26, 51, 0.12); --cyan: #00799E; --code: #ECE9FA; color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 500 17px/1.65 "Nunito", system-ui, sans-serif; }
+a { color: var(--cyan); }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; border-radius: 8px; }
+header { border-bottom: 1px solid var(--border); }
+header div { max-width: 820px; margin: 0 auto; padding: 12px 20px; display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font: 700 20px "Rubik", sans-serif; flex-grow: 1; }
+.brand img { width: 40px; height: 40px; }
+nav { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 3px; }
+nav a { min-width: 44px; min-height: 40px; display: inline-flex; align-items: center; justify-content: center; border-radius: 11px; text-decoration: none; color: var(--text); font-weight: 900; font-size: 13px; }
+nav a[aria-current="page"] { background: #FFC93C; color: #141A33; }
+.theme { width: 44px; height: 44px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); color: var(--text); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.theme svg { width: 20px; height: 20px; }
+[data-theme="dark"] .sun-hide, [data-theme="light"] .moon-hide { display: none; }
+main { max-width: 820px; margin: 0 auto; padding: 32px 20px 48px; }
+article { background: var(--surface); border: 1px solid var(--border); border-radius: 28px; padding: 36px; }
+h1, h2, h3 { font-family: "Rubik", sans-serif; font-weight: 700; line-height: 1.2; }
+h1 { font-size: 34px; margin: 0 0 12px; }
+h2 { font-size: 22px; margin: 28px 0 8px; }
+ul { padding-left: 22px; }
+li { margin: 4px 0; }
+code { background: var(--code); border-radius: 6px; padding: 0 5px; }
+.back { display: inline-block; margin-top: 24px; font-weight: 800; }
+footer { text-align: center; color: var(--muted); font-size: 14px; padding: 0 20px 40px; }
+@media (max-width: 600px) { article { padding: 20px; border-radius: 22px; } h1 { font-size: 28px; } body { font-size: 16px; } }
+</style>
+</head>
+<body>
+<header><div>
+<a class="brand" href="../../?lang=fr"><img src="../../img/badaba-cat-3d.svg" alt="" width="40" height="40">Badaba Studio</a>
+<nav aria-label="Langue"><a href="en.html" lang="en">EN</a><a href="tr.html" lang="tr">TR</a><a href="es.html" lang="es">ES</a><a href="fr.html" lang="fr" aria-current="page">FR</a></nav>
+<button type="button" class="theme" id="theme" aria-label="">
+<svg class="moon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"></path></svg>
+<svg class="sun-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+</button>
+</div></header>
+<main>
+<article>
+<h1>Politique de confidentialité</h1>
+<p><strong>Jeu :</strong> Badaba Odd One Out (Badaba Farklı Olanı Bul en turc), qui se joue dans le navigateur sur <a href="https://badaba-odd-one-out.web.app/">badaba-odd-one-out.web.app</a></p>
+<p><strong>Date d'entrée en vigueur :</strong> 17 novembre 2026 (2026-11-17)</p>
+<p>Cette politique explique comment le jeu (le « jeu », « nous ») traite les informations. En bref : le jeu ne collecte aucune donnée personnelle, auprès de personne. Il n'a ni compte, ni publicité, ni mesure d'audience, ni cookies, ni achats, ni chat, ni liens qui sortent du jeu.</p>
+<h2>1. Informations que nous collectons</h2>
+<p>Aucune. Le jeu ne demande jamais de nom, d'adresse e-mail, de position ni aucune autre information personnelle, il n'a aucun endroit où saisir du texte et il ne crée aucun identifiant publicitaire ni autre identifiant.</p>
+<h2>2. Informations enregistrées sur ton appareil</h2>
+<p>Pour garder ta progression, le jeu enregistre un petit fichier dans le stockage de ton navigateur pour ce site, uniquement sur ton appareil. Il contient :</p>
+<ul>
+<li>les étoiles gagnées à chaque niveau, et donc les niveaux ouverts,</li>
+<li>ton meilleur score dans le mode chronométré et le nombre d'images trouvées dans le mode calme,</li>
+<li>si le son est activé.</li>
+</ul>
+<p>Ce fichier n'est jamais envoyé nulle part et nous ne pouvons pas le voir. Effacer les données de ce site dans ton navigateur le supprime et remet ta progression à zéro.</p>
+<h2>3. Hébergement et tiers</h2>
+<p>Les fichiers du jeu sont servis par Firebase Hosting, un service de Google. Comme pour tout site web, quand ton navigateur télécharge le jeu, les serveurs de Google reçoivent les informations techniques nécessaires pour le livrer, comme ton adresse IP et le type de navigateur, et peuvent les conserver dans des journaux de serveur selon les <a href="https://policies.google.com/privacy">règles de confidentialité de Google</a> (voir aussi <a href="https://firebase.google.com/support/privacy">Confidentialité et sécurité dans Firebase</a>). Nous n'avons activé ni mesure d'audience ni journalisation des requêtes pour le jeu, et nous n'y utilisons aucun autre service Firebase ou Google.</p>
+<p>Une fois chargé, le jeu n'envoie aucune donnée sur internet. Il ne contient aucun service ni SDK tiers de publicité, de mesure d'audience, de rapport de plantage, de paiement ou de connexion via un réseau social.</p>
+<h2>4. Enfants</h2>
+<p>Le jeu est fait pour les jeunes enfants, y compris ceux qui ne savent pas encore lire. Il ne collecte aucune information personnelle, auprès de personne, enfants compris. Il n'a ni publicité, ni achats, ni chat, ni moyen de contacter d'autres joueurs, ni liens vers d'autres sites.</p>
+<h2>5. Tes droits</h2>
+<p>Comme nous ne collectons ni ne conservons aucune donnée personnelle te concernant, il n'y a rien à consulter, corriger, exporter ou supprimer de notre côté. Ta progression reste entièrement sous ton contrôle dans ton navigateur (voir la section 2). Tu peux tout de même nous écrire pour toute question.</p>
+<h2>6. Modifications de cette politique</h2>
+<p>Si une future version ajoute des fonctions qui traitent des données (par exemple publicité, mesure d'audience, achats ou fonctions en ligne), nous mettrons cette politique à jour avant sa sortie, changerons la date d'entrée en vigueur ci-dessus et, lorsque la loi l'exige, demanderons d'abord le consentement.</p>
+<h2>7. Contact</h2>
+<p>Questions sur cette politique ou le jeu : <a href="mailto:alicancagdasdev@gmail.com">alicancagdasdev@gmail.com</a></p>
+</article>
+<a class="back" href="../../?lang=fr">Retour à Badaba Studio</a>
+</main>
+<footer>© 2026 Badaba Studio</footer>
+<script>
+(function () {
+  var root = document.documentElement, btn = document.getElementById("theme");
+  function label() { btn.setAttribute("aria-label", root.getAttribute("data-theme") === "dark" ? "Passer en mode clair" : "Passer en mode sombre"); }
+  btn.addEventListener("click", function () {
+    var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    root.setAttribute("data-theme", next);
+    try { localStorage.setItem("badaba-theme", next); } catch (e) {}
+    label();
+  });
+  label();
+})();
+</script>
+</body>
+</html>
