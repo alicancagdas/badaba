@@ -1,117 +1,215 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Badaba Studio</title>
-<meta name="description" content="Badaba Studio makes small games and short videos: Coin Kitty on Google Play and Badaba on YouTube. English, Türkçe, Español, Français.">
-<meta name="color-scheme" content="light">
+<meta name="description" content="Badaba Studio makes small games and short videos: Coin Kitty on Google Play and Badaba Shorts on YouTube. English, Türkçe, Español, Français.">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0A0F1F">
 <link rel="icon" href="img/badaba-cat-3d.svg" type="image/svg+xml">
 <link rel="icon" href="img/favicon.png" type="image/png">
 <meta property="og:title" content="Badaba Studio">
 <meta property="og:description" content="Small games and short videos, made with care.">
 <meta property="og:image" content="https://alicancagdas.github.io/badaba/img/badaba-banner.webp">
+<script>
+// Theme before first paint: saved choice, else the device setting.
+(function () {
+  var t = null;
+  try { t = localStorage.getItem("badaba-theme"); } catch (e) {}
+  if (t !== "dark" && t !== "light") t = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", t);
+})();
+</script>
 <style>
 @font-face { font-family: "Rubik"; src: url("fonts/Rubik-Bold.ttf") format("truetype"); font-weight: 700; font-display: swap; }
 @font-face { font-family: "Nunito"; src: url("fonts/Nunito-Variable.ttf") format("truetype"); font-weight: 400 900; font-display: swap; }
 :root {
-  --ink: #1E2A4A; --ink-soft: #4A5672; --cream: #FFF6E5; --paper: #FFFFFF; --sand: #F4EBDD;
-  --gold: #F6C028; --tag-bg: #FCE3B4; --tag-ink: #7A4B00;
-  --red: #E8413A; --orange: #F79A3A; --green: #3BB55E; --blue: #36A3F0; --purple: #8B6CF0;
-  --wrap: 1180px; --pad: 32px; --radius: 28px; --line: 3px;
+  --gold: #FFC93C; --on-gold: #141A33; --pink: #FF5FA2; --coral: #FF7A59; --violet: #8E7CFF;
+  --wrap: 1200px; --pad: 32px; --radius: 32px;
+}
+[data-theme="dark"] {
+  --bg: #0A0F1F; --text: #F3F1FF; --muted: #B3B8DA; --surface: rgba(255, 255, 255, 0.05); --surface-solid: #121831;
+  --border: rgba(255, 255, 255, 0.12); --header: rgba(10, 15, 31, 0.78); --dot: rgba(255, 255, 255, 0.07);
+  --glow-a: rgba(255, 122, 89, 0.42); --glow-b: rgba(142, 124, 255, 0.45); --ring: rgba(63, 214, 255, 0.35);
+  --cyan: #3FD6FF; --gold-glow: rgba(255, 201, 60, 0.35); --shadow: rgba(0, 0, 0, 0.55);
+  --badge: rgba(63, 214, 255, 0.14); --badge-text: #7FE6FF;
+  --contact: linear-gradient(135deg, rgba(255, 122, 89, 0.16), rgba(142, 124, 255, 0.18));
+  color-scheme: dark;
+}
+[data-theme="light"] {
+  --bg: #F6F4FF; --text: #141A33; --muted: #4E5677; --surface: #FFFFFF; --surface-solid: #FFFFFF;
+  --border: rgba(20, 26, 51, 0.12); --header: rgba(246, 244, 255, 0.86); --dot: rgba(20, 26, 51, 0.08);
+  --glow-a: rgba(255, 122, 89, 0.30); --glow-b: rgba(142, 124, 255, 0.30); --ring: rgba(0, 120, 160, 0.30);
+  --cyan: #00799E; --gold-glow: rgba(232, 168, 0, 0.30); --shadow: rgba(20, 26, 51, 0.25);
+  --badge: rgba(0, 121, 158, 0.10); --badge-text: #005E7A;
+  --contact: linear-gradient(135deg, rgba(255, 122, 89, 0.12), rgba(142, 124, 255, 0.14));
+  color-scheme: light;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .shots img { transition: none !important; } }
-body { margin: 0; background: var(--cream); color: var(--ink); font: 500 18px/1.55 "Nunito", system-ui, sans-serif; }
-a { color: var(--ink); }
+body { margin: 0; background: var(--bg); color: var(--text); font: 500 18px/1.55 "Nunito", system-ui, sans-serif; transition: background 0.3s ease, color 0.3s ease; }
+a { color: inherit; }
 h1, h2, h3 { font-family: "Rubik", "Nunito", sans-serif; font-weight: 700; }
 .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 var(--pad); }
-.skip { position: absolute; left: -999px; top: 8px; background: var(--paper); padding: 8px 12px; border-radius: 8px; z-index: 50; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--surface-solid); padding: 8px 12px; border-radius: 8px; z-index: 50; }
 .skip:focus { left: 8px; }
-:focus-visible { outline: 3px solid #2F9E80; outline-offset: 3px; border-radius: 8px; }
+:focus-visible { outline: 3px solid var(--cyan); outline-offset: 3px; border-radius: 10px; }
+.kicker { font-weight: 900; font-size: 13px; letter-spacing: 2px; color: var(--cyan); text-transform: uppercase; }
+.muted { color: var(--muted); }
+.grad { background: linear-gradient(90deg, var(--gold), var(--coral) 45%, var(--pink) 70%, var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-header.top { position: sticky; top: 0; z-index: 10; background: rgba(255, 246, 229, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(30, 42, 74, 0.08); }
-header.top .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 28px; padding-top: 12px; padding-bottom: 12px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 22px "Rubik", sans-serif; }
-.brand img { width: 46px; height: 46px; }
-nav.main { display: flex; gap: 24px; flex-grow: 1; font-weight: 800; font-size: 16px; }
-nav.main a { text-decoration: none; color: var(--ink-soft); }
-nav.main a:hover { color: var(--ink); }
-.langs { display: flex; gap: 4px; background: var(--paper); border: 2px solid var(--ink); border-radius: 14px; padding: 4px; }
-.langs button { min-width: 46px; min-height: 40px; border: 0; border-radius: 10px; background: transparent; color: var(--ink); font: 900 14px "Nunito", sans-serif; cursor: pointer; }
-.langs button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+/* Header */
+header.top { position: sticky; top: 0; z-index: 20; background: var(--header); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+header.top .wrap { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; padding-top: 12px; padding-bottom: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 21px "Rubik", sans-serif; }
+.brand img { width: 42px; height: 42px; }
+nav.main { display: flex; gap: 22px; flex-grow: 1; font-weight: 800; font-size: 15px; }
+nav.main a { text-decoration: none; color: var(--muted); }
+nav.main a:hover { color: var(--text); }
+.tools { display: flex; gap: 10px; align-items: center; }
+.langs { display: flex; gap: 2px; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 3px; }
+.langs button { min-width: 44px; min-height: 38px; border: 0; border-radius: 11px; background: transparent; color: var(--text); font: 900 13px "Nunito", sans-serif; cursor: pointer; }
+.langs button[aria-pressed="true"] { background: var(--gold); color: var(--on-gold); }
+.icon-btn { width: 44px; height: 44px; border-radius: 14px; border: 1px solid var(--border); background: var(--surface); color: var(--text); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.icon-btn svg { width: 20px; height: 20px; }
+[data-theme="dark"] .sun-hide, [data-theme="light"] .moon-hide { display: none; }
 
-.hero .wrap { display: flex; flex-wrap: wrap; gap: 48px; align-items: center; padding-top: 72px; padding-bottom: 88px; }
-.hero .copy { flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
-.tag { align-self: flex-start; background: var(--tag-bg); color: var(--tag-ink); border-radius: 999px; padding: 6px 14px; font-weight: 900; font-size: 13px; letter-spacing: 1.2px; text-transform: uppercase; }
-.hero h1 { margin: 0; font-size: clamp(38px, 5.2vw, 62px); line-height: 1.04; letter-spacing: -1px; }
-.hero p { margin: 0; font-size: 20px; color: var(--ink-soft); max-width: 34em; }
+/* Buttons */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 16px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font: 900 17px "Nunito", sans-serif; text-decoration: none; cursor: pointer; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.btn:hover { transform: translateY(-2px); }
+.btn.gold { background: var(--gold); color: var(--on-gold); border-color: var(--gold); box-shadow: 0 10px 30px var(--gold-glow); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(var(--dot) 1px, transparent 1.4px); background-size: 28px 28px; pointer-events: none; }
+.hero .wrap { position: relative; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; padding-top: 84px; padding-bottom: 96px; }
+.hero .copy { flex: 1 1 500px; min-width: 0; display: flex; flex-direction: column; gap: 22px; }
+.pill { align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; border: 1px solid var(--border); background: var(--surface); border-radius: 999px; padding: 6px 14px 6px 10px; font-weight: 800; font-size: 14px; color: var(--muted); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); animation: pulse 1.6s ease-in-out infinite; }
+.hero h1 { margin: 0; font-size: clamp(40px, 5.6vw, 66px); line-height: 1.02; letter-spacing: -1.5px; }
+.hero p { margin: 0; font-size: 20px; max-width: 32em; }
 .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 6px; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 16px; border: var(--line) solid var(--ink); background: var(--paper); color: var(--ink); font: 900 17px "Nunito", sans-serif; text-decoration: none; box-shadow: 0 5px 0 var(--ink); transition: transform 0.12s ease, box-shadow 0.12s ease; }
-.btn:hover { transform: translateY(-2px); box-shadow: 0 7px 0 var(--ink); }
-.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--ink); }
-.btn.gold { background: var(--gold); }
-.btn svg { width: 20px; height: 20px; flex: none; }
-.stage { flex: 1 1 420px; min-width: 0; position: relative; border-radius: 40px; background: linear-gradient(135deg, #FFC383 0%, #FF9AA2 52%, #C7A3F5 100%); border: var(--line) solid var(--ink); box-shadow: 0 10px 0 var(--ink); padding: 28px; display: flex; justify-content: center; align-items: center; min-height: 480px; }
-.stage img { width: min(430px, 100%); height: auto; }
-.wordmark { position: absolute; left: 26px; top: 24px; background: var(--paper); border-radius: 999px; padding: 6px 20px 10px; border: var(--line) solid var(--ink); font: 700 34px/1 "Rubik", sans-serif; -webkit-text-stroke: 1.5px var(--ink); }
-.wordmark span:nth-child(1) { color: var(--red); } .wordmark span:nth-child(2) { color: var(--orange); }
-.wordmark span:nth-child(3) { color: var(--gold); } .wordmark span:nth-child(4) { color: var(--green); }
-.wordmark span:nth-child(5) { color: var(--blue); } .wordmark span:nth-child(6) { color: var(--purple); }
+.stage { flex: 1 1 420px; min-width: 0; position: relative; height: 480px; display: flex; align-items: center; justify-content: center; }
+.glow-a, .glow-b, .ring { position: absolute; border-radius: 50%; pointer-events: none; }
+.glow-a { width: 420px; height: 420px; background: radial-gradient(circle, var(--glow-a) 0%, transparent 62%); }
+.glow-b { width: 300px; height: 300px; right: 30px; top: 10px; background: radial-gradient(circle, var(--glow-b) 0%, transparent 65%); }
+.ring { width: 440px; height: 440px; border: 2px dashed var(--ring); animation: spin 40s linear infinite; }
+.cat-btn { position: relative; border: 0; background: transparent; padding: 0; cursor: pointer; animation: bob 4s ease-in-out infinite; border-radius: 50%; }
+.cat-btn img { width: 380px; height: 380px; max-width: 80vw; max-height: 80vw; display: block; transition: filter 0.6s ease, transform 0.15s ease; }
+.cat-btn:active img { transform: scale(0.96); }
+.cat-btn.hop img { animation: hop 0.45s ease; }
+.cat-btn.golden img { filter: sepia(1) saturate(4) hue-rotate(-12deg) brightness(1.08) drop-shadow(0 0 30px rgba(255, 201, 60, 0.7)); }
+.cat-hint { position: absolute; right: 18px; bottom: 34px; border: 1px solid var(--border); background: var(--surface); border-radius: 12px; padding: 6px 12px; font-weight: 800; font-size: 13px; color: var(--muted); }
+.wordmark { position: absolute; left: 14px; top: 22px; background: #FFFFFF; border-radius: 999px; padding: 4px 16px 8px; font: 700 28px/1 "Rubik", sans-serif; -webkit-text-stroke: 1.5px #141A33; display: flex; }
+.wordmark span { display: inline-block; }
+.wordmark span:nth-child(1) { color: #E8413A; } .wordmark span:nth-child(2) { color: #F79A3A; }
+.wordmark span:nth-child(3) { color: #F6C028; } .wordmark span:nth-child(4) { color: #3BB55E; }
+.wordmark span:nth-child(5) { color: #36A3F0; } .wordmark span:nth-child(6) { color: #8B6CF0; }
+.wordmark.wave span { animation: wave 0.9s ease; }
+.wordmark.wave span:nth-child(2) { animation-delay: 0.06s; } .wordmark.wave span:nth-child(3) { animation-delay: 0.12s; }
+.wordmark.wave span:nth-child(4) { animation-delay: 0.18s; } .wordmark.wave span:nth-child(5) { animation-delay: 0.24s; }
+.wordmark.wave span:nth-child(6) { animation-delay: 0.30s; }
+.coin-fx { position: absolute; left: 50%; top: 45%; width: 26px; height: 26px; margin: -13px 0 0 -13px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #FFF0A8, #F8C832 45%, #C98A0B); box-shadow: 0 0 0 2px rgba(201, 138, 11, 0.6); pointer-events: none; animation: fly 0.9s cubic-bezier(.2, .7, .3, 1) forwards; }
 
-section.block { padding: 24px 0 80px; }
-section.block h2 { margin: 0 0 6px; font-size: 40px; }
-section.block .lead { margin: 0 0 28px; color: var(--ink-soft); max-width: 60ch; }
-.card { display: flex; flex-wrap: wrap; background: var(--paper); border: var(--line) solid var(--ink); border-radius: var(--radius); box-shadow: 0 8px 0 var(--ink); overflow: hidden; }
-.card .info { flex: 1 1 420px; min-width: 0; padding: 36px; display: flex; flex-direction: column; gap: 16px; }
-.game-head { display: flex; gap: 18px; align-items: center; }
-.game-head img { width: 96px; height: 96px; border-radius: 24px; border: 2px solid var(--ink); flex: none; }
+/* Sections */
+section.block { padding: 32px 0 88px; scroll-margin-top: 72px; }
+section.block h2 { margin: 6px 0 8px; font-size: clamp(32px, 4vw, 44px); letter-spacing: -0.5px; }
+.lead { margin: 0 0 28px; max-width: 60ch; }
+.panel { border: 1px solid var(--border); background: var(--surface); border-radius: var(--radius); }
+.game { display: flex; flex-wrap: wrap; gap: 40px; align-items: center; padding: 36px; }
+.preview { flex: 0 1 300px; min-width: 0; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+.phone { position: relative; border-radius: 40px; padding: 10px; background: #0B0F1C; box-shadow: 0 24px 60px var(--shadow), 0 0 0 1px var(--border); }
+.phone video { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; border-radius: 32px; background: #FFF6E5; }
+.live { margin: 0; display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; font-weight: 900; }
+.live i { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); flex: none; }
+.live span { flex: 1; }
+.vid-toggle { width: 44px; height: 44px; flex: none; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--text); display: inline-flex; align-items: center; justify-content: center; cursor: pointer; }
+.vid-toggle svg { width: 18px; height: 18px; }
+.info { flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+.game-head { display: flex; gap: 16px; align-items: center; }
+.game-head img { width: 84px; height: 84px; border-radius: 22px; flex: none; }
 .game-head div { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
-.card h3 { margin: 0; font-size: 30px; line-height: 1.1; }
-.badge { background: var(--ink); color: var(--paper); border-radius: 999px; padding: 3px 12px; font-size: 13px; font-weight: 900; }
-.card p { margin: 0; }
+.game h3 { margin: 0; font-size: 30px; line-height: 1.1; }
+.badge { border-radius: 999px; padding: 3px 12px; font-size: 13px; font-weight: 900; background: var(--badge); color: var(--badge-text); }
 .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; font-size: 14px; font-weight: 900; }
-.chips li { background: var(--sand); border-radius: 999px; padding: 5px 14px; }
-.small { font-size: 15px; color: var(--ink-soft); }
-.shots { flex: 1 1 460px; min-width: 0; background: linear-gradient(160deg, #A9D2F2 0%, #F2E7D6 100%); display: flex; justify-content: center; align-items: center; gap: 16px; padding: 36px 24px; }
-.shots img { width: 30%; max-width: 168px; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 22px; border: var(--line) solid var(--ink); box-shadow: 0 6px 0 rgba(30, 42, 74, 0.35); background: var(--cream); }
-.shots img:nth-child(2) { transform: translateY(-18px); }
-.channel-art { flex: 1 1 520px; min-width: 0; height: auto; align-self: center; aspect-ratio: 16 / 9; object-fit: cover; display: block; width: 100%; }
-.handle { font-weight: 900; color: var(--ink-soft); }
-.contact { background: var(--ink); color: var(--cream); border-radius: 32px; padding: 48px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between; }
+.chips li { border: 1px solid var(--border); border-radius: 999px; padding: 5px 14px; }
+.thumbs { display: flex; gap: 12px; }
+.thumbs img { width: 92px; height: auto; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 14px; border: 1px solid var(--border); }
+.small { margin: 0; font-size: 14px; }
+.shorts-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 26px; }
+.shorts { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; }
+.short { position: relative; border: 1px solid var(--border); background: var(--surface); border-radius: 22px; padding: 0; overflow: hidden; cursor: pointer; text-align: left; color: var(--text); font: inherit; transition: transform 0.15s ease; }
+.short:hover { transform: translateY(-3px); }
+.short img { display: block; width: 100%; height: auto; aspect-ratio: 9 / 16; object-fit: cover; }
+.short .play { position: absolute; left: 50%; top: 42%; transform: translate(-50%, -50%); width: 56px; height: 56px; border-radius: 50%; background: rgba(10, 15, 31, 0.72); display: flex; align-items: center; justify-content: center; }
+.short .play svg { width: 22px; height: 22px; fill: #FFFFFF; }
+.short .name { display: block; padding: 10px 12px 12px; font-weight: 800; font-size: 14px; line-height: 1.3; }
+.short-frame { border: 1px solid var(--border); border-radius: 22px; overflow: hidden; aspect-ratio: 9 / 16; background: #000; }
+.short-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
+.contact { position: relative; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); background: var(--contact); padding: 52px; display: flex; flex-wrap: wrap; gap: 28px; align-items: center; justify-content: space-between; }
 .contact > div { flex: 1 1 420px; min-width: 0; }
-.contact h2 { color: var(--paper); margin-bottom: 8px; }
-.contact p { margin: 0; color: #E9E2D3; }
-.contact .btn { border-color: var(--gold); box-shadow: none; overflow-wrap: anywhere; }
-footer { border-top: 1px solid rgba(30, 42, 74, 0.12); }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between; padding-top: 26px; padding-bottom: 40px; font-size: 14px; color: var(--ink-soft); }
-footer a { color: var(--ink-soft); }
+.contact h2 { margin: 0 0 8px; }
+.contact p { margin: 0; }
+.contact .btn { overflow-wrap: anywhere; }
+footer { border-top: 1px solid var(--border); }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: space-between; align-items: center; padding-top: 26px; padding-bottom: 40px; font-size: 14px; color: var(--muted); }
+footer a { color: var(--muted); }
+.secret { border: 0; background: transparent; padding: 0; width: 44px; height: 44px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.secret span { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); opacity: 0.3; transition: opacity 0.3s ease, box-shadow 0.3s ease; }
+.secret.found span { opacity: 1; box-shadow: 0 0 18px var(--gold); }
+.toast { position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px); opacity: 0; background: #141A33; color: #FFFFFF; border: 1px solid rgba(255, 201, 60, 0.6); border-radius: 16px; padding: 12px 18px; font-weight: 800; box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35); transition: opacity 0.25s ease, transform 0.25s ease; z-index: 30; pointer-events: none; }
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
 
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+@keyframes hop { 0% { transform: translateY(0); } 40% { transform: translateY(-26px) scale(1.03); } 100% { transform: translateY(0); } }
+@keyframes wave { 0%, 100% { transform: translateY(0); } 40% { transform: translateY(-14px); } }
+@keyframes fly { 0% { transform: translate(0, 0) scale(0.6); opacity: 1; } 100% { transform: translate(var(--dx), var(--dy)) scale(1); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ring, .cat-btn, .dot { animation: none !important; }
+  .cat-btn.hop img, .wordmark.wave span, .coin-fx { animation: none !important; }
+  .btn, .short { transition: none; }
+}
+
+@media (max-width: 900px) {
+  .shorts { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 46%; overflow-x: auto; padding-bottom: 6px; scroll-snap-type: x mandatory; }
+  .shorts > * { scroll-snap-align: start; }
+}
 @media (max-width: 760px) {
-  :root { --pad: 16px; }
+  :root { --pad: 16px; --radius: 26px; }
   body { font-size: 16px; }
   header.top .wrap { flex-direction: column; align-items: stretch; }
+  .brand-row { display: flex; align-items: center; justify-content: space-between; }
   nav.main { display: none; }
+  .tools { width: 100%; }
+  .langs { flex: 1; }
   .langs button { flex: 1; min-height: 44px; }
-  .hero .wrap { padding-top: 22px; padding-bottom: 48px; gap: 22px; }
-  .stage { order: -1; min-height: 0; padding: 12px; border-radius: 32px; box-shadow: 0 8px 0 var(--ink); }
-  .stage img { width: min(300px, 100%); }
-  .wordmark { font-size: 24px; left: 14px; top: 14px; padding: 4px 14px 8px; }
+  .hero .wrap { padding-top: 18px; padding-bottom: 48px; gap: 18px; }
+  .stage { order: -1; height: 320px; flex-basis: 100%; }
+  .glow-a, .ring { width: 300px; height: 300px; }
+  .glow-b { width: 220px; height: 220px; right: 0; }
+  .cat-btn img { width: 270px; height: 270px; }
+  .cat-hint { right: 4px; bottom: 6px; }
+  .wordmark { font-size: 22px; left: 0; top: 0; padding: 3px 12px 6px; }
   .hero p { font-size: 17px; }
   .cta { flex-direction: column; }
   .cta .btn { width: 100%; }
-  section.block { padding: 8px 0 44px; }
-  section.block h2 { font-size: 30px; }
-  .card .info { padding: 22px; }
-  .card h3 { font-size: 22px; }
-  .game-head img { width: 72px; height: 72px; border-radius: 18px; }
-  .shots { order: -1; padding: 24px 12px; gap: 10px; }
-  .shots img { border-radius: 14px; border-width: 2px; }
-  .shots img:nth-child(2) { transform: translateY(-10px); }
-  .contact { padding: 28px 22px; border-radius: 26px; }
+  section.block { padding: 12px 0 44px; scroll-margin-top: 120px; }
+  .game { padding: 18px; gap: 18px; }
+  .preview { flex-basis: 100%; max-width: 320px; }
+  .phone { border-radius: 30px; padding: 8px; }
+  .phone video { border-radius: 24px; }
+  .game-head img { width: 64px; height: 64px; border-radius: 18px; }
+  .game h3 { font-size: 21px; }
+  .thumbs img { width: 30%; }
+  .shorts { grid-auto-columns: 62%; }
+  .contact { padding: 28px 20px; }
   .contact .btn { width: 100%; font-size: 15px; }
-  footer .wrap { flex-direction: column; }
+  footer .wrap { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
@@ -119,84 +217,106 @@ footer a { color: var(--ink-soft); }
 <a class="skip" href="#top" data-i18n="skip">Skip to content</a>
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top"><img src="img/badaba-cat-3d.svg" alt="" width="46" height="46">Badaba Studio</a>
+    <div class="brand-row">
+      <a class="brand" href="#top"><img src="img/badaba-cat-3d.svg" alt="" width="42" height="42">Badaba Studio</a>
+    </div>
     <nav class="main" aria-label="Main">
       <a href="#games" data-i18n="nav_games">Games</a>
-      <a href="#videos" data-i18n="nav_videos">Videos</a>
+      <a href="#shorts" data-i18n="nav_shorts">Shorts</a>
       <a href="#contact" data-i18n="nav_contact">Contact</a>
     </nav>
-    <div class="langs" role="group" aria-label="Language" id="langs">
-      <button type="button" data-lang="en" aria-pressed="true" lang="en" title="English">EN</button>
-      <button type="button" data-lang="tr" aria-pressed="false" lang="tr" title="Türkçe">TR</button>
-      <button type="button" data-lang="es" aria-pressed="false" lang="es" title="Español">ES</button>
-      <button type="button" data-lang="fr" aria-pressed="false" lang="fr" title="Français">FR</button>
+    <div class="tools">
+      <div class="langs" role="group" aria-label="Language" id="langs">
+        <button type="button" data-lang="en" aria-pressed="true" lang="en" title="English">EN</button>
+        <button type="button" data-lang="tr" aria-pressed="false" lang="tr" title="Türkçe">TR</button>
+        <button type="button" data-lang="es" aria-pressed="false" lang="es" title="Español">ES</button>
+        <button type="button" data-lang="fr" aria-pressed="false" lang="fr" title="Français">FR</button>
+      </div>
+      <button type="button" class="icon-btn" id="theme" aria-label="Switch theme">
+        <svg class="moon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"></circle><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"></path></svg>
+        <svg class="sun-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"></path></svg>
+      </button>
     </div>
   </div>
 </header>
 
 <main id="top">
-  <div class="hero">
+  <section class="hero">
     <div class="wrap">
       <div class="copy">
-        <span class="tag" data-i18n="eyebrow">Independent studio · Games &amp; videos</span>
-        <h1 data-i18n="hero_title">Small games and short videos, made with care.</h1>
-        <p data-i18n="hero_text">We make calm, friendly games and wordless videos that anyone can enjoy, in any language.</p>
+        <span class="pill"><span class="dot" aria-hidden="true"></span><span data-i18n="kicker">Coin Kitty is coming to Google Play</span></span>
+        <h1><span data-i18n="hero_a">Small games and short videos, </span><span class="grad" data-i18n="hero_b">made with care.</span></h1>
+        <p class="muted" data-i18n="hero_text">Calm, friendly games and wordless videos that anyone can enjoy, in any language.</p>
         <div class="cta">
-          <a class="btn gold" href="#games" data-i18n="cta_games">Our games</a>
-          <a class="btn" href="https://www.youtube.com/@badabakids" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z"></path></svg><span data-i18n="cta_youtube">Watch on YouTube</span></a>
+          <a class="btn gold" href="#games"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"></path></svg><span data-i18n="cta_preview">Play the preview</span></a>
+          <a class="btn" href="#shorts" data-i18n="cta_shorts">Watch our Shorts</a>
         </div>
       </div>
       <div class="stage">
-        <img src="img/badaba-cat-3d.svg" alt="" data-i18n-alt="mascot_alt" width="430" height="430">
-        <div class="wordmark" aria-hidden="true"><span>B</span><span>a</span><span>d</span><span>a</span><span>b</span><span>a</span></div>
+        <div class="glow-a" aria-hidden="true"></div>
+        <div class="glow-b" aria-hidden="true"></div>
+        <div class="ring" aria-hidden="true"></div>
+        <div class="wordmark" id="wordmark" aria-hidden="true"><span>B</span><span>a</span><span>d</span><span>a</span><span>b</span><span>a</span></div>
+        <button type="button" class="cat-btn" id="cat" aria-label="Tap the cat"><img src="img/badaba-cat-3d.svg" alt="" width="380" height="380"></button>
+        <span class="cat-hint" id="cat-hint" aria-live="polite">Psst… tap the cat</span>
       </div>
     </div>
-  </div>
+  </section>
 
   <section id="games" class="block">
     <div class="wrap">
-      <h2 data-i18n="games_title">Games</h2>
-      <p class="lead" data-i18n="games_lead">Our first game is on its way to Google Play.</p>
-      <article class="card">
+      <span class="kicker" data-i18n="games_kicker">Games</span>
+      <h2 data-i18n="game_name">Coin Kitty</h2>
+      <article class="panel game">
+        <figure class="preview">
+          <div class="phone">
+            <video id="preview" muted loop playsinline preload="metadata" poster="video/coin-kitty-preview-en.webp" aria-label="Coin Kitty gameplay preview">
+              <source id="preview-src" src="video/coin-kitty-preview-en.mp4" type="video/mp4">
+            </video>
+          </div>
+          <figcaption class="live"><i></i><span data-i18n="preview_badge">Gameplay · plays on its own</span>
+          <button type="button" class="vid-toggle" id="vid-toggle" aria-label="Pause the preview">
+            <svg id="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"></rect><rect x="14" y="5" width="4" height="14" rx="1"></rect></svg>
+            <svg id="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="display: none"><path d="M8 5.5v13l10.5-6.5z"></path></svg>
+          </button></figcaption>
+        </figure>
         <div class="info">
           <div class="game-head">
-            <img src="img/coin-kitty-icon.png" alt="" width="96" height="96">
+            <img src="img/coin-kitty-icon.png" alt="" width="84" height="84">
             <div>
               <h3 data-i18n="game_title">Coin Kitty: Merge &amp; Save</h3>
               <span class="badge" data-i18n="game_badge">Coming soon on Google Play</span>
             </div>
           </div>
-          <p data-i18n="game_text">Drop coins into a cat jar, merge equal ones and save up to the Golden Cat! A new Daily Jar goal every day, a wardrobe for the hero and his dreams from a bike to a private island.</p>
+          <p class="muted" style="margin: 0" data-i18n="game_text">Drop coins into a cat jar, merge equal ones and save up to the Golden Cat! A new Daily Jar goal every day, a wardrobe for the hero and his dreams from a bike to a private island.</p>
           <ul class="chips">
             <li data-i18n="chip_ads">No ads</li>
             <li data-i18n="chip_iap">No in-app purchases</li>
             <li data-i18n="chip_offline">Plays offline</li>
             <li>EN · TR · ES · FR</li>
           </ul>
-          <p class="small"><span data-i18n="privacy_label">Privacy policy:</span> <a href="kumbara-kedi/privacy/en.html" lang="en">EN</a> · <a href="kumbara-kedi/privacy/tr.html" lang="tr">TR</a> · <a href="kumbara-kedi/privacy/es.html" lang="es">ES</a> · <a href="kumbara-kedi/privacy/fr.html" lang="fr">FR</a></p>
-        </div>
-        <div class="shots">
-          <img data-shot="menu" src="img/coin-kitty-en-menu.webp" alt="" width="360" height="640" loading="lazy">
-          <img data-shot="game" src="img/coin-kitty-en-game.webp" alt="" width="360" height="640" loading="lazy">
-          <img data-shot="room" src="img/coin-kitty-en-room.webp" alt="" width="360" height="640" loading="lazy">
+          <div class="thumbs">
+            <img data-shot="menu" src="img/coin-kitty-en-menu.webp" alt="" width="360" height="640" loading="lazy">
+            <img data-shot="game" src="img/coin-kitty-en-game.webp" alt="" width="360" height="640" loading="lazy">
+            <img data-shot="room" src="img/coin-kitty-en-room.webp" alt="" width="360" height="640" loading="lazy">
+          </div>
+          <p class="small muted"><span data-i18n="privacy_label">Privacy policy:</span> <a href="kumbara-kedi/privacy/en.html" lang="en">EN</a> · <a href="kumbara-kedi/privacy/tr.html" lang="tr">TR</a> · <a href="kumbara-kedi/privacy/es.html" lang="es">ES</a> · <a href="kumbara-kedi/privacy/fr.html" lang="fr">FR</a></p>
         </div>
       </article>
     </div>
   </section>
 
-  <section id="videos" class="block">
+  <section id="shorts" class="block">
     <div class="wrap">
-      <h2 data-i18n="videos_title">Videos</h2>
-      <p class="lead" data-i18n="videos_lead">Short, wordless puzzles for little ones, like “find the odd one out”. No words, so every child can play along.</p>
-      <article class="card">
-        <img class="channel-art" src="img/badaba-banner.webp" alt="" width="1280" height="720" loading="lazy">
-        <div class="info" style="flex: 1 1 340px; justify-content: center">
-          <h3>Badaba</h3>
-          <span class="handle">@badabakids</span>
-          <p data-i18n="channel_text">New shorts on YouTube. Watch together with your child.</p>
-          <div><a class="btn gold" href="https://www.youtube.com/@badabakids" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4"></rect><path d="M10 9.5v5l4.5-2.5z"></path></svg><span data-i18n="cta_youtube">Watch on YouTube</span></a></div>
+      <div class="shorts-head">
+        <div>
+          <span class="kicker">Shorts</span>
+          <h2 data-i18n="shorts_title">Find the odd one out</h2>
+          <p class="muted" style="margin: 0" data-i18n="shorts_text">Wordless puzzles for little ones on Badaba (@badabakids). Tap a Short to play it here.</p>
         </div>
-      </article>
+        <a class="btn" href="https://www.youtube.com/@badabakids" rel="noopener" data-i18n="shorts_all">All Shorts on YouTube</a>
+      </div>
+      <div class="shorts" id="shorts-grid"></div>
     </div>
   </section>
 
@@ -205,7 +325,7 @@ footer a { color: var(--ink-soft); }
       <div class="contact">
         <div>
           <h2 data-i18n="contact_title">Say hello</h2>
-          <p data-i18n="contact_text">Questions, ideas or a bug in one of our games? Write to us.</p>
+          <p class="muted" data-i18n="contact_text">Questions, ideas or a bug in one of our games? Write to us.</p>
         </div>
         <a class="btn gold" href="mailto:alicancagdasdev@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"></rect><path d="m4 7 8 6 8-6"></path></svg>alicancagdasdev@gmail.com</a>
       </div>
@@ -217,81 +337,184 @@ footer a { color: var(--ink-soft); }
   <div class="wrap">
     <span>© 2026 Badaba Studio</span>
     <span><span data-i18n="footer_policy">Coin Kitty privacy policy:</span> <a href="kumbara-kedi/privacy/en.html" lang="en">EN</a> · <a href="kumbara-kedi/privacy/tr.html" lang="tr">TR</a> · <a href="kumbara-kedi/privacy/es.html" lang="es">ES</a> · <a href="kumbara-kedi/privacy/fr.html" lang="fr">FR</a></span>
-    <span><span data-i18n="footer_privacy">No cookies, no tracking.</span> · <span data-i18n="footer_fonts">Fonts:</span> Rubik, Nunito (<a href="fonts/Rubik-OFL.txt">OFL</a>, <a href="fonts/Nunito-OFL.txt">OFL</a>)</span>
+    <span><span data-i18n="footer_privacy">No cookies, no tracking. YouTube loads only when you press play.</span> · <span data-i18n="footer_fonts">Fonts:</span> Rubik, Nunito (<a href="fonts/Rubik-OFL.txt">OFL</a>, <a href="fonts/Nunito-OFL.txt">OFL</a>)</span>
+    <button type="button" class="secret" id="secret" aria-label="A coin"><span></span></button>
   </div>
 </footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
+var SHORTS = [
+  { id: "td8PJUpVcqg", items: { en: "Cat · Fish · Ladybug", tr: "Kedi · Balık · Uğur böceği", es: "Gato · Pez · Mariquita", fr: "Chat · Poisson · Coccinelle" } },
+  { id: "We-YacDPuyE", items: { en: "Balloon · Apple · Butterfly", tr: "Balon · Elma · Kelebek", es: "Globo · Manzana · Mariposa", fr: "Ballon · Pomme · Papillon" } },
+  { id: "Nno9iZ9th40", items: { en: "Owl · House · Flower", tr: "Baykuş · Ev · Çiçek", es: "Búho · Casa · Flor", fr: "Hibou · Maison · Fleur" } },
+  { id: "11gHUuZn9UA", items: { en: "Sun · Car · Bee", tr: "Güneş · Araba · Arı", es: "Sol · Coche · Abeja", fr: "Soleil · Voiture · Abeille" } },
+  { id: "wl4iEuNzuoM", items: { en: "Frog · Clock · Ice cream", tr: "Kurbağa · Saat · Dondurma", es: "Rana · Reloj · Helado", fr: "Grenouille · Horloge · Glace" } }
+];
 var TEXT = {
   en: {
-    skip: "Skip to content", nav_games: "Games", nav_videos: "Videos", nav_contact: "Contact", lang_label: "Language",
-    eyebrow: "Independent studio · Games & videos",
-    hero_title: "Small games and short videos, made with care.",
-    hero_text: "We make calm, friendly games and wordless videos that anyone can enjoy, in any language.",
-    cta_games: "Our games", cta_youtube: "Watch on YouTube", mascot_alt: "The Badaba cat, winking, with a gold coin",
-    games_title: "Games", games_lead: "Our first game is on its way to Google Play.",
+    skip: "Skip to content", nav_games: "Games", nav_shorts: "Shorts", nav_contact: "Contact", lang_label: "Language",
+    to_light: "Switch to light mode", to_dark: "Switch to dark mode",
+    kicker: "Coin Kitty is coming to Google Play",
+    hero_a: "Small games and short videos, ", hero_b: "made with care.",
+    hero_text: "Calm, friendly games and wordless videos that anyone can enjoy, in any language.",
+    cta_preview: "Play the preview", cta_shorts: "Watch our Shorts",
+    cat_label: "Tap the cat", cat_hint: "Psst… tap the cat", cat_count: "Coins: %d / 10", cat_gold: "Golden cat unlocked",
+    toast_gold: "You unlocked the golden cat!", toast_coin: "You found the secret coin!", coin_label: "A coin",
+    games_kicker: "Games", game_name: "Coin Kitty",
+    preview_badge: "Gameplay · plays on its own", preview_label: "Coin Kitty gameplay preview", pause: "Pause the preview", play: "Play the preview",
     game_title: "Coin Kitty: Merge & Save", game_badge: "Coming soon on Google Play",
     game_text: "Drop coins into a cat jar, merge equal ones and save up to the Golden Cat! A new Daily Jar goal every day, a wardrobe for the hero and his dreams from a bike to a private island.",
     chip_ads: "No ads", chip_iap: "No in-app purchases", chip_offline: "Plays offline", privacy_label: "Privacy policy:",
     shot_menu: "Coin Kitty main menu", shot_game: "Coin Kitty during a game", shot_room: "Coin Kitty: the hero's world",
-    videos_title: "Videos",
-    videos_lead: "Short, wordless puzzles for little ones, like “find the odd one out”. No words, so every child can play along.",
-    channel_text: "New shorts on YouTube. Watch together with your child.",
+    shorts_title: "Find the odd one out",
+    shorts_text: "Wordless puzzles for little ones on Badaba (@badabakids). Tap a Short to play it here.",
+    shorts_all: "All Shorts on YouTube", short_play: "Play Short:",
     contact_title: "Say hello", contact_text: "Questions, ideas or a bug in one of our games? Write to us.",
-    footer_policy: "Coin Kitty privacy policy:", footer_privacy: "No cookies, no tracking.", footer_fonts: "Fonts:"
+    footer_policy: "Coin Kitty privacy policy:", footer_privacy: "No cookies, no tracking. YouTube loads only when you press play.", footer_fonts: "Fonts:"
   },
   tr: {
-    skip: "İçeriğe geç", nav_games: "Oyunlar", nav_videos: "Videolar", nav_contact: "İletişim", lang_label: "Dil",
-    eyebrow: "Bağımsız stüdyo · Oyunlar ve videolar",
-    hero_title: "Özenle yapılmış küçük oyunlar ve kısa videolar.",
-    hero_text: "Herkesin, her dilde keyifle oynayıp izleyebileceği sakin, sıcak oyunlar ve sözsüz videolar yapıyoruz.",
-    cta_games: "Oyunlarımız", cta_youtube: "YouTube'da izle", mascot_alt: "Göz kırpan Badaba kedisi ve altın para",
-    games_title: "Oyunlar", games_lead: "İlk oyunumuz Google Play'e geliyor.",
+    skip: "İçeriğe geç", nav_games: "Oyunlar", nav_shorts: "Shorts", nav_contact: "İletişim", lang_label: "Dil",
+    to_light: "Açık moda geç", to_dark: "Koyu moda geç",
+    kicker: "Kumbara Kedi Google Play'e geliyor",
+    hero_a: "Küçük oyunlar ve kısa videolar, ", hero_b: "özenle yapıldı.",
+    hero_text: "Herkesin, her dilde keyifle oynayıp izleyebileceği sakin, sıcak oyunlar ve sözsüz videolar.",
+    cta_preview: "Önizlemeyi izle", cta_shorts: "Shorts'larımızı izle",
+    cat_label: "Kediye dokun", cat_hint: "Psst… kediye dokun", cat_count: "Para: %d / 10", cat_gold: "Altın kedi açıldı",
+    toast_gold: "Altın kediyi açtın!", toast_coin: "Gizli parayı buldun!", coin_label: "Bir para",
+    games_kicker: "Oyunlar", game_name: "Kumbara Kedi",
+    preview_badge: "Oynanış · kendi kendine oynar", preview_label: "Kumbara Kedi oynanış önizlemesi", pause: "Önizlemeyi duraklat", play: "Önizlemeyi oynat",
     game_title: "Kumbara Kedi: Para Birleştir", game_badge: "Yakında Google Play'de",
     game_text: "Paraları kedi kumbaraya at, eşleri birleştir, Altın Kedi'ye kadar biriktir! Her gün yeni bir Günlük Kumbara hedefi, kahraman için bir gardırop ve bisikletten özel adaya uzanan hayaller.",
     chip_ads: "Reklam yok", chip_iap: "Uygulama içi satın alma yok", chip_offline: "Çevrimdışı oynanır", privacy_label: "Gizlilik politikası:",
     shot_menu: "Kumbara Kedi ana menü", shot_game: "Kumbara Kedi oyun sırasında", shot_room: "Kumbara Kedi: kahramanın dünyası",
-    videos_title: "Videolar",
-    videos_lead: "Küçükler için kısa, sözsüz bulmacalar; örneğin “farklı olanı bul”. Söz yok, her çocuk katılabilir.",
-    channel_text: "YouTube'da yeni kısa videolar. Çocuğunuzla birlikte izleyin.",
+    shorts_title: "Farklı olanı bul",
+    shorts_text: "Badaba'da (@badabakids) küçükler için sözsüz bulmacalar. Burada oynatmak için bir Short'a dokunun.",
+    shorts_all: "Tüm Shorts'lar YouTube'da", short_play: "Short'u oynat:",
     contact_title: "Merhaba deyin", contact_text: "Bir sorunuz, fikriniz ya da oyunlarımızda bir hata mı var? Bize yazın.",
-    footer_policy: "Kumbara Kedi gizlilik politikası:", footer_privacy: "Çerez yok, takip yok.", footer_fonts: "Yazı tipleri:"
+    footer_policy: "Kumbara Kedi gizlilik politikası:", footer_privacy: "Çerez yok, takip yok. YouTube yalnızca oynata basınca yüklenir.", footer_fonts: "Yazı tipleri:"
   },
   es: {
-    skip: "Ir al contenido", nav_games: "Juegos", nav_videos: "Vídeos", nav_contact: "Contacto", lang_label: "Idioma",
-    eyebrow: "Estudio independiente · Juegos y vídeos",
-    hero_title: "Pequeños juegos y vídeos cortos, hechos con cariño.",
-    hero_text: "Hacemos juegos tranquilos y amables y vídeos sin palabras que cualquiera puede disfrutar, en cualquier idioma.",
-    cta_games: "Nuestros juegos", cta_youtube: "Ver en YouTube", mascot_alt: "El gato de Badaba guiñando un ojo, con una moneda de oro",
-    games_title: "Juegos", games_lead: "Nuestro primer juego llega pronto a Google Play.",
+    skip: "Ir al contenido", nav_games: "Juegos", nav_shorts: "Shorts", nav_contact: "Contacto", lang_label: "Idioma",
+    to_light: "Cambiar a modo claro", to_dark: "Cambiar a modo oscuro",
+    kicker: "Coin Kitty llega a Google Play",
+    hero_a: "Pequeños juegos y vídeos cortos, ", hero_b: "hechos con cariño.",
+    hero_text: "Juegos tranquilos y amables y vídeos sin palabras que cualquiera puede disfrutar, en cualquier idioma.",
+    cta_preview: "Ver el avance", cta_shorts: "Ver nuestros Shorts",
+    cat_label: "Toca al gato", cat_hint: "Psst… toca al gato", cat_count: "Monedas: %d / 10", cat_gold: "Gato dorado desbloqueado",
+    toast_gold: "¡Desbloqueaste el gato dorado!", toast_coin: "¡Encontraste la moneda secreta!", coin_label: "Una moneda",
+    games_kicker: "Juegos", game_name: "Coin Kitty",
+    preview_badge: "Partida · se juega sola", preview_label: "Avance de Coin Kitty", pause: "Pausar el avance", play: "Reproducir el avance",
     game_title: "Coin Kitty: Fusiona monedas", game_badge: "Próximamente en Google Play",
     game_text: "¡Suelta monedas en una hucha gatuna, fusiona las iguales y ahorra hasta el Gato dorado! Un nuevo reto de la Hucha diaria cada día, un armario para el protagonista y sus sueños, de una bici a una isla privada.",
     chip_ads: "Sin anuncios", chip_iap: "Sin compras en la app", chip_offline: "Funciona sin conexión", privacy_label: "Política de privacidad:",
     shot_menu: "Menú principal de Coin Kitty", shot_game: "Coin Kitty durante una partida", shot_room: "Coin Kitty: el mundo del protagonista",
-    videos_title: "Vídeos",
-    videos_lead: "Acertijos cortos y sin palabras para los más pequeños, como “encuentra el diferente”. Sin palabras, así cualquier niño puede jugar.",
-    channel_text: "Nuevos shorts en YouTube. Míralos junto a tu hijo o hija.",
+    shorts_title: "Encuentra el diferente",
+    shorts_text: "Acertijos sin palabras para los más pequeños en Badaba (@badabakids). Toca un Short para verlo aquí.",
+    shorts_all: "Todos los Shorts en YouTube", short_play: "Ver Short:",
     contact_title: "Escríbenos", contact_text: "¿Preguntas, ideas o un error en uno de nuestros juegos? Escríbenos.",
-    footer_policy: "Política de privacidad de Coin Kitty:", footer_privacy: "Sin cookies ni seguimiento.", footer_fonts: "Tipografías:"
+    footer_policy: "Política de privacidad de Coin Kitty:", footer_privacy: "Sin cookies ni seguimiento. YouTube solo se carga cuando pulsas reproducir.", footer_fonts: "Tipografías:"
   },
   fr: {
-    skip: "Aller au contenu", nav_games: "Jeux", nav_videos: "Vidéos", nav_contact: "Contact", lang_label: "Langue",
-    eyebrow: "Studio indépendant · Jeux et vidéos",
-    hero_title: "Petits jeux et courtes vidéos, faits avec soin.",
-    hero_text: "Nous faisons des jeux calmes et chaleureux et des vidéos sans paroles que chacun peut apprécier, dans toutes les langues.",
-    cta_games: "Nos jeux", cta_youtube: "Regarder sur YouTube", mascot_alt: "Le chat Badaba qui fait un clin d'œil, avec une pièce d'or",
-    games_title: "Jeux", games_lead: "Notre premier jeu arrive bientôt sur Google Play.",
+    skip: "Aller au contenu", nav_games: "Jeux", nav_shorts: "Shorts", nav_contact: "Contact", lang_label: "Langue",
+    to_light: "Passer en mode clair", to_dark: "Passer en mode sombre",
+    kicker: "Coin Kitty arrive sur Google Play",
+    hero_a: "Petits jeux et courtes vidéos, ", hero_b: "faits avec soin.",
+    hero_text: "Des jeux calmes et chaleureux et des vidéos sans paroles que chacun peut apprécier, dans toutes les langues.",
+    cta_preview: "Voir l'aperçu", cta_shorts: "Voir nos Shorts",
+    cat_label: "Touche le chat", cat_hint: "Psst… touche le chat", cat_count: "Pièces : %d / 10", cat_gold: "Chat doré débloqué",
+    toast_gold: "Tu as débloqué le chat doré !", toast_coin: "Tu as trouvé la pièce secrète !", coin_label: "Une pièce",
+    games_kicker: "Jeux", game_name: "Coin Kitty",
+    preview_badge: "Partie · se joue toute seule", preview_label: "Aperçu de Coin Kitty", pause: "Mettre l'aperçu en pause", play: "Lire l'aperçu",
     game_title: "Coin Kitty : Chat-tirelire", game_badge: "Bientôt sur Google Play",
     game_text: "Lâche des pièces dans la tirelire chat, fusionne les pièces identiques et économise jusqu'au Chat doré ! Un nouvel objectif de la Tirelire du jour chaque jour, une garde-robe pour le héros et ses rêves, du vélo à l'île privée.",
     chip_ads: "Sans publicité", chip_iap: "Sans achats intégrés", chip_offline: "Se joue hors ligne", privacy_label: "Politique de confidentialité :",
     shot_menu: "Menu principal de Coin Kitty", shot_game: "Coin Kitty pendant une partie", shot_room: "Coin Kitty : le monde du héros",
-    videos_title: "Vidéos",
-    videos_lead: "De courtes énigmes sans paroles pour les petits, comme « trouve l'intrus ». Sans paroles, chaque enfant peut jouer.",
-    channel_text: "De nouveaux shorts sur YouTube. À regarder avec votre enfant.",
+    shorts_title: "Trouve l'intrus",
+    shorts_text: "Des énigmes sans paroles pour les petits sur Badaba (@badabakids). Touchez un Short pour le voir ici.",
+    shorts_all: "Tous les Shorts sur YouTube", short_play: "Voir le Short :",
     contact_title: "Écrivez-nous", contact_text: "Une question, une idée ou un bug dans l'un de nos jeux ? Écrivez-nous.",
-    footer_policy: "Politique de confidentialité de Coin Kitty :", footer_privacy: "Ni cookies, ni traçage.", footer_fonts: "Polices :"
+    footer_policy: "Politique de confidentialité de Coin Kitty :", footer_privacy: "Ni cookies ni traçage. YouTube ne se charge que lorsque vous appuyez sur lecture.", footer_fonts: "Polices :"
   }
 };
+var lang = "en";
+var coins = 0;
+var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function t(key) { return TEXT[lang][key] || TEXT.en[key] || ""; }
+function toast(msg) {
+  var el = document.getElementById("toast");
+  el.textContent = msg;
+  el.classList.add("show");
+  clearTimeout(toast.timer);
+  toast.timer = setTimeout(function () { el.classList.remove("show"); }, 2600);
+}
+function catHint() {
+  document.getElementById("cat-hint").textContent = coins === 0 ? t("cat_hint") : (coins >= 10 ? t("cat_gold") : t("cat_count").replace("%d", coins));
+}
+function themeLabel() {
+  var dark = document.documentElement.getAttribute("data-theme") === "dark";
+  document.getElementById("theme").setAttribute("aria-label", dark ? t("to_light") : t("to_dark"));
+  document.querySelector('meta[name="theme-color"]').setAttribute("content", dark ? "#0A0F1F" : "#F6F4FF");
+}
+function renderShorts() {
+  var grid = document.getElementById("shorts-grid");
+  grid.textContent = "";
+  SHORTS.forEach(function (s) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "short";
+    b.setAttribute("aria-label", t("short_play") + " " + s.items[lang]);
+    var img = document.createElement("img");
+    img.src = "img/shorts/" + s.id + ".jpg"; img.alt = ""; img.width = 360; img.height = 640; img.loading = "lazy";
+    var play = document.createElement("span");
+    play.className = "play";
+    play.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l10.5-6.5z"></path></svg>';
+    var name = document.createElement("span");
+    name.className = "name";
+    name.textContent = s.items[lang];
+    b.appendChild(img); b.appendChild(play); b.appendChild(name);
+    b.addEventListener("click", function () {
+      var frame = document.createElement("div");
+      frame.className = "short-frame";
+      var f = document.createElement("iframe");
+      f.src = "https://www.youtube-nocookie.com/embed/" + s.id + "?autoplay=1&playsinline=1&rel=0";
+      f.title = s.items[lang];
+      f.allow = "autoplay; encrypted-media; picture-in-picture";
+      f.allowFullscreen = true;
+      frame.appendChild(f);
+      b.replaceWith(frame);
+    });
+    grid.appendChild(b);
+  });
+}
+function apply(next) {
+  lang = next;
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-i18n]").forEach(function (el) { var k = el.getAttribute("data-i18n"); if (TEXT[lang][k]) el.textContent = TEXT[lang][k]; });
+  document.querySelectorAll("img[data-shot]").forEach(function (img) {
+    var shot = img.getAttribute("data-shot");
+    img.src = "img/coin-kitty-" + lang + "-" + shot + ".webp";
+    img.alt = t("shot_" + shot);
+  });
+  var video = document.getElementById("preview");
+  var src = "video/coin-kitty-preview-" + lang + ".mp4";
+  if (document.getElementById("preview-src").getAttribute("src") !== src) {
+    var wasPlaying = !video.paused;
+    document.getElementById("preview-src").setAttribute("src", src);
+    video.setAttribute("poster", "video/coin-kitty-preview-" + lang + ".webp");
+    video.load();
+    if (wasPlaying) video.play().catch(function () {});
+  }
+  video.setAttribute("aria-label", t("preview_label"));
+  document.getElementById("cat").setAttribute("aria-label", t("cat_label"));
+  document.getElementById("secret").setAttribute("aria-label", t("coin_label"));
+  document.getElementById("langs").setAttribute("aria-label", t("lang_label"));
+  document.querySelectorAll("#langs button").forEach(function (b) { b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false"); });
+  syncVideoButton();
+  catHint();
+  themeLabel();
+  renderShorts();
+}
 function pickLang() {
   var q = new URLSearchParams(location.search).get("lang");
   if (q && TEXT[q]) return q;
@@ -299,36 +522,78 @@ function pickLang() {
   var nav = (navigator.language || "en").slice(0, 2).toLowerCase();
   return TEXT[nav] ? nav : "en";
 }
-function apply(lang) {
-  var t = TEXT[lang];
-  document.documentElement.lang = lang;
-  document.querySelectorAll("[data-i18n]").forEach(function (el) {
-    var key = el.getAttribute("data-i18n");
-    if (t[key]) el.textContent = t[key];
-  });
-  document.querySelectorAll("[data-i18n-alt]").forEach(function (el) {
-    el.alt = t[el.getAttribute("data-i18n-alt")] || "";
-  });
-  document.querySelectorAll("img[data-shot]").forEach(function (img) {
-    var shot = img.getAttribute("data-shot");
-    img.src = "img/coin-kitty-" + lang + "-" + shot + ".webp";
-    img.alt = t["shot_" + shot];
-  });
-  document.getElementById("langs").setAttribute("aria-label", t.lang_label);
-  document.querySelectorAll("#langs button").forEach(function (b) {
-    b.setAttribute("aria-pressed", b.getAttribute("data-lang") === lang ? "true" : "false");
-  });
-}
 document.querySelectorAll("#langs button").forEach(function (b) {
   b.addEventListener("click", function () {
-    var lang = b.getAttribute("data-lang");
-    try { localStorage.setItem("badaba-lang", lang); } catch (e) {}
-    var url = new URL(location.href);
-    url.searchParams.set("lang", lang);
-    history.replaceState(null, "", url);
-    apply(lang);
+    var next = b.getAttribute("data-lang");
+    try { localStorage.setItem("badaba-lang", next); } catch (e) {}
+    var url = new URL(location.href); url.searchParams.set("lang", next); history.replaceState(null, "", url);
+    apply(next);
   });
 });
+document.getElementById("theme").addEventListener("click", function () {
+  var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  try { localStorage.setItem("badaba-theme", next); } catch (e) {}
+  themeLabel();
+});
+// Surprise 1 and 2: tap the cat for coins; ten coins make it golden.
+document.getElementById("cat").addEventListener("click", function () {
+  var cat = this;
+  coins += 1;
+  if (!reduce) {
+    cat.classList.remove("hop"); void cat.offsetWidth; cat.classList.add("hop");
+    var stage = cat.parentElement;
+    for (var i = 0; i < 6; i++) {
+      var c = document.createElement("span");
+      c.className = "coin-fx";
+      var angle = (Math.PI * 2 * i) / 6 + Math.random() * 0.6;
+      c.style.setProperty("--dx", Math.round(Math.cos(angle) * (120 + Math.random() * 60)) + "px");
+      c.style.setProperty("--dy", Math.round(Math.sin(angle) * (120 + Math.random() * 60) - 40) + "px");
+      stage.appendChild(c);
+      setTimeout(function (el) { return function () { el.remove(); }; }(c), 950);
+    }
+  }
+  if (coins === 10) { cat.classList.add("golden"); toast(t("toast_gold")); }
+  catHint();
+});
+// Surprise 3: type "badaba" anywhere and the wordmark dances.
+var typed = "";
+document.addEventListener("keydown", function (e) {
+  if (e.target && /input|textarea/i.test(e.target.tagName)) return;
+  typed = (typed + (e.key || "").toLowerCase()).slice(-6);
+  if (typed === "badaba") {
+    var w = document.getElementById("wordmark");
+    w.classList.remove("wave"); void w.offsetWidth; w.classList.add("wave");
+    toast("Ba-da-ba!");
+  }
+});
+// Surprise 4: the secret coin in the footer.
+document.getElementById("secret").addEventListener("click", function () {
+  this.classList.add("found");
+  toast(t("toast_coin"));
+});
+// The preview plays muted while it is on screen (not with reduced motion); a button pauses it.
+var video = document.getElementById("preview");
+var userPaused = reduce;
+function syncVideoButton() {
+  var playing = !video.paused;
+  document.getElementById("icon-pause").style.display = playing ? "" : "none";
+  document.getElementById("icon-play").style.display = playing ? "none" : "";
+  document.getElementById("vid-toggle").setAttribute("aria-label", playing ? t("pause") : t("play"));
+}
+document.getElementById("vid-toggle").addEventListener("click", function () {
+  if (video.paused) { userPaused = false; video.play().catch(function () {}); } else { userPaused = true; video.pause(); }
+});
+video.addEventListener("play", syncVideoButton);
+video.addEventListener("pause", syncVideoButton);
+if ("IntersectionObserver" in window) {
+  new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (en.isIntersecting && !userPaused) video.play().catch(function () {});
+      else if (!en.isIntersecting) video.pause();
+    });
+  }, { threshold: 0.35 }).observe(video);
+}
 apply(pickLang());
 </script>
 </body>
